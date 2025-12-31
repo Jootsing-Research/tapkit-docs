@@ -1,0 +1,39 @@
+---
+title: Run Shortcut
+description: Execute an iOS Shortcut
+api: POST /phones/{phone_id}/shortcut
+---
+
+Run an iOS Shortcut by name or index.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/shortcut \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "My Shortcut"}'
+```
+
+### Request Body
+
+By name:
+```json
+{
+  "name": "My Shortcut"
+}
+```
+
+By index:
+```json
+{
+  "index": 0
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | `string` | Shortcut name |
+| `index` | `integer` | Shortcut position (0-based) |
+
+Provide either `name` or `index`, not both.

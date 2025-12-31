@@ -1,0 +1,192 @@
+---
+title: Type Text
+description: Enter text into input fields
+---
+
+TapKit can type text into any active text field using two methods: simulated keystrokes or clipboard paste.
+
+## Basic Usage
+
+Type text using simulated keystrokes:
+
+```python
+phone.type_text("Hello, world!")
+```
+
+## Input Methods
+
+### Keys (Default)
+
+Simulates pressing individual keys:
+
+```python
+phone.type_text("Hello", method="keys")
+```
+
+- More realistic typing simulation
+- Works in all apps
+- Slower for long text
+
+### Paste
+
+Uses the clipboard to paste text:
+
+```python
+phone.type_text("Hello", method="paste")
+```
+
+- Much faster for long text
+- Text appears instantly
+- May not work in all contexts
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `text` | `str` | required | Text to type |
+| `method` | `str` | `"keys"` | `"keys"` or `"paste"` |
+
+## When to Use Each Method
+
+<Tabs>
+  <Tab title="Keys">
+    **Best for:**
+    - Short text inputs
+    - Password fields (some block paste)
+    - Apps that need realistic input timing
+    - Testing keyboard behavior
+
+    ```python
+    phone.type_text("password123", method="keys")
+    ```
+  </Tab>
+  <Tab title="Paste">
+    **Best for:**
+    - Long text content
+    - URLs
+    - Bulk data entry
+    - Speed-critical automation
+
+    ```python
+    phone.type_text("https://example.com/very/long/url", method="paste")
+    ```
+  </Tab>
+</Tabs>
+
+## Examples
+
+### Fill a Form
+
+```python
+# Tap name field
+phone.tap((phone.width // 2, 200))
+time.sleep(0.2)
+
+# Type name
+phone.type_text("John Doe")
+time.sleep(0.2)
+
+# Tap email field
+phone.tap((phone.width // 2, 280))
+time.sleep(0.2)
+
+# Type email
+phone.type_text("john@example.com")
+```
+
+### Enter a URL
+
+```python
+# Open Safari and tap address bar
+phone.open_app("Safari")
+time.sleep(1)
+phone.tap((phone.width // 2, 80))
+time.sleep(0.3)
+
+# Paste URL (faster for long URLs)
+phone.type_text("https://example.com/page", method="paste")
+```
+
+### Type a Message
+
+```python
+# Open Messages
+phone.open_app("Messages")
+time.sleep(1)
+
+# Tap compose field
+phone.tap((phone.width // 2, phone.height - 50))
+time.sleep(0.2)
+
+# Type message
+phone.type_text("Hey! How are you?")
+
+# Tap send
+phone.tap((phone.width - 40, phone.height - 50))
+```
+
+### Enter Multi-line Text
+
+```python
+# Type with newlines
+phone.type_text("Line 1\nLine 2\nLine 3", method="paste")
+```
+
+### Search
+
+```python
+# Open Spotlight
+phone.spotlight()
+time.sleep(0.3)
+
+# Type search query
+phone.type_text("Weather")
+time.sleep(0.5)
+
+# Tap first result
+phone.tap((phone.width // 2, 200))
+```
+
+## Tips
+
+<AccordionGroup>
+  <Accordion title="Ensure field is focused">
+    Tap the input field first and wait briefly before typing:
+
+    ```python
+    phone.tap((100, 200))  # Tap field
+    time.sleep(0.2)         # Wait for keyboard
+    phone.type_text("Text")
+    ```
+  </Accordion>
+
+  <Accordion title="Special characters">
+    Both methods support special characters, emoji, and international text:
+
+    ```python
+    phone.type_text("Hello! 👋 Привет!")
+    ```
+  </Accordion>
+
+  <Accordion title="Clear existing text">
+    To replace existing text, first select all and delete:
+
+    ```python
+    phone.tap_and_hold((100, 200))  # Long press to select
+    time.sleep(0.5)
+    # Tap "Select All" if available
+    phone.type_text("New text")  # Replaces selection
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Shortcuts" icon="bolt" href="/apps/shortcuts">
+    Run iOS Shortcuts
+  </Card>
+  <Card title="Open Apps" icon="grid-2" href="/apps/open-apps">
+    Launch applications
+  </Card>
+</CardGroup>

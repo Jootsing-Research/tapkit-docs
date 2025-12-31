@@ -1,0 +1,201 @@
+---
+title: Screen Utilities
+description: Screen class for coordinate conversion and bounds checking
+---
+
+The `Screen` class provides utilities for working with screen coordinates, including conversion between absolute and normalized coordinates and bounds checking.
+
+## Accessing the Screen
+
+Every phone has a `screen` property:
+
+```python
+phone = client.get_phone()
+screen = phone.screen
+
+print(f"Screen: {screen.width}x{screen.height}")
+```
+
+## Screen Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `width` | `int` | Screen width in pixels |
+| `height` | `int` | Screen height in pixels |
+| `center` | `Point` | Center point of the screen |
+
+## Get Screen Center
+
+```python
+# Tap center of screen
+phone.tap(phone.screen.center)
+
+# Or use the center property
+center = phone.screen.center
+print(f"Center: {center.x}, {center.y}")
+```
+
+## Bounds Checking
+
+### Check if Point is Valid
+
+```python
+from tapkit.geometry import Point
+
+point = Point(100, 200)
+
+if phone.screen.contains(point):
+    phone.tap(point)
+else:
+    print("Point is outside screen bounds")
+```
+
+### Clamp to Valid Range
+
+Ensure coordinates are within screen bounds:
+
+```python
+from tapkit.geometry import Point
+
+# Point that might be out of bounds
+point = Point(-10, 3000)
+
+# Clamp to valid range
+valid_point = phone.screen.clamp(point)
+print(valid_point)  # Point(x=0, y=2531) for 2532 height screen
+
+phone.tap(valid_point)
+```
+
+## Coordinate Conversion
+
+### Point to Normalized
+
+```python
+from tapkit.geometry import Point
+
+abs_point = Point(585, 1266)
+norm_point = phone.screen.point_to_normalized(abs_point)
+
+print(norm_point)  # NormalizedPoint(x=0.5, y=0.5)
+```
+
+### Normalized to Point
+
+```python
+from tapkit.geometry import NormalizedPoint
+
+norm_point = NormalizedPoint(0.5, 0.5)
+abs_point = phone.screen.point_to_absolute(norm_point)
+
+print(abs_point)  # Point at center
+```
+
+### BBox to Normalized
+
+```python
+from tapkit.geometry import BBox
+
+abs_box = BBox(x1=100, y1=200, x2=300, y2=400)
+norm_box = phone.screen.bbox_to_normalized(abs_box)
+```
+
+### Normalized to BBox
+
+```python
+from tapkit.geometry import NormalizedBBox
+
+norm_box = NormalizedBBox(x1=0.1, y1=0.1, x2=0.9, y2=0.2)
+abs_box = phone.screen.bbox_to_absolute(norm_box)
+```
+
+## Examples
+
+### Safe Tap with Bounds Check
+
+```python
+def safe_tap(phone, point):
+    """Tap only if point is within bounds."""
+    if phone.screen.contains(point):
+        phone.tap(point)
+        return True
+    return False
+
+# Usage
+from tapkit.geometry import Point
+success = safe_tap(phone, Point(100, 200))
+```
+
+### Clamp Vision Model Output
+
+```python
+from tapkit.geometry import Point
+
+# Vision model might return coordinates outside bounds
+model_x, model_y = 1200, 2600  # Slightly out of bounds
+
+raw_point = Point(model_x, model_y)
+safe_point = phone.screen.clamp(raw_point)
+
+phone.tap(safe_point)
+```
+
+### Device-Independent Positioning
+
+```python
+from tapkit.geometry import NormalizedPoint
+
+# Define position as percentage
+button_position = NormalizedPoint(0.5, 0.9)  # Bottom center
+
+# Works on any device
+phones = client.list_phones()
+for phone in phones:
+    abs_pos = phone.screen.point_to_absolute(button_position)
+    phone.tap(abs_pos)
+```
+
+### Calculate Regions
+
+```python
+# Divide screen into quadrants
+screen = phone.screen
+
+top_left = Point(screen.width // 4, screen.height // 4)
+top_right = Point(screen.width * 3 // 4, screen.height // 4)
+bottom_left = Point(screen.width // 4, screen.height * 3 // 4)
+bottom_right = Point(screen.width * 3 // 4, screen.height * 3 // 4)
+```
+
+### Create Screen-Relative BBox
+
+```python
+from tapkit.geometry import BBox
+
+# Header region (top 10% of screen)
+header = BBox(
+    x1=0,
+    y1=0,
+    x2=phone.screen.width,
+    y2=phone.screen.height // 10
+)
+
+# Footer region (bottom 10%)
+footer = BBox(
+    x1=0,
+    y1=phone.screen.height * 9 // 10,
+    x2=phone.screen.width,
+    y2=phone.screen.height
+)
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Coordinates" icon="crosshairs" href="/geometry/coordinates">
+    Point and NormalizedPoint classes
+  </Card>
+  <Card title="Bounding Boxes" icon="square" href="/geometry/bounding-boxes">
+    BBox and NormalizedBBox classes
+  </Card>
+</CardGroup>

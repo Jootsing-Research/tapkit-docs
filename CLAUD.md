@@ -1,24 +1,33 @@
-# Mintlify documentation
+# TapKit Documentation
+
+## Project overview
+TapKit documentation for the iPhone automation platform. Covers:
+- Python SDK (tapkit package)
+- REST API
+- Setup guides for Mac app, phone, and dashboard
 
 ## Working relationship
-- You can push back on ideas-this can lead to better documentation. Cite sources and explain your reasoning when you do so
+- Push back on ideas when it leads to better documentation
 - ALWAYS ask for clarification rather than making assumptions
 - NEVER lie, guess, or make up information
+- Reference the main jootsing-server repo for SDK/API implementation details
 
 ## Project context
 - Format: MDX files with YAML frontmatter
 - Config: docs.json for navigation, theme, settings
 - Components: Mintlify components
+- SDK source: ../jootsing-server/sdk/tapkit/
+- API source: ../jootsing-server/src/jootsing_server/
 
 ## Content strategy
-- Document just enough for user success - not too much, not too little
-- Prioritize accuracy and usability of information
+- Document for user success - not too much, not too little
+- Prioritize accuracy and usability
 - Make content evergreen when possible
-- Search for existing information before adding new content. Avoid duplication unless it is done for a strategic reason
 - Check existing patterns for consistency
-- Start by making the smallest reasonable changes
+- Start with smallest reasonable changes
+- Keep SDK docs in sync with actual implementation
 
-## Frontmatter requirements for pages
+## Frontmatter requirements
 - title: Clear, descriptive page title
 - description: Concise summary for SEO/navigation
 
@@ -29,13 +38,21 @@
 - Match style and formatting of existing pages
 - Include both basic and advanced use cases
 - Language tags on all code blocks
-- Alt text on all images
 - Relative paths for internal links
+
+## Key documentation areas
+- Getting Started: index, quickstart, authentication
+- SDK: installation, client, phones, screenshots
+- Actions: taps, swipes, drag, pinch
+- Device Control: navigation, lock-unlock, orientation, buttons
+- App Control: open-apps, type-text, shortcuts
+- Geometry: coordinates, bounding-boxes, screen
+- Setup: mac-app, phone, dashboard
+- API Reference: Full REST API documentation
 
 ## Git workflow
 - NEVER use --no-verify when committing
-- Ask how to handle uncommitted changes before starting
-- Create a new branch when no clear branch exists for changes
+- Create a new branch when no clear branch exists
 - Commit frequently throughout development
 - NEVER skip or disable pre-commit hooks
 
@@ -44,3 +61,4 @@
 - Use absolute URLs for internal links
 - Include untested code examples
 - Make assumptions - always ask for clarification
+- Document features that don't exist yet

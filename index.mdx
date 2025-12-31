@@ -1,97 +1,68 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: Introduction
+description: Programmatically control iPhones with TapKit
 ---
 
-## Setting up
+TapKit enables you to control real iPhones programmatically through a simple API. Execute touch gestures, launch apps, type text, and capture screenshots - all from your code.
 
-Get your documentation site up and running in minutes.
+## What is TapKit?
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+TapKit provides infrastructure for iPhone automation:
 
-## Make it yours
+- **REST API** - Control phones via HTTP requests
+- **Python SDK** - High-level client library with intuitive methods
+- **Real-time streaming** - View phone screens via WebRTC
 
-Design a docs site that looks great and empowers your users.
+## Core Capabilities
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={2}>
+  <Card title="Touch Actions" icon="hand-pointer" href="/actions/taps">
+    Tap, swipe, drag, and pinch - all the gestures you need
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="Device Control" icon="mobile" href="/device/navigation">
+    Navigate home, lock/unlock, adjust volume, and more
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="App Control" icon="grid-2" href="/apps/open-apps">
+    Launch apps, type text, and run Shortcuts
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title="Screenshots" icon="camera" href="/sdk/screenshots">
+    Capture high-resolution screenshots on demand
   </Card>
-</Columns>
+</CardGroup>
 
-## Create beautiful pages
+## Quick Example
 
-Everything you need to create world-class documentation.
+```python
+from tapkit import TapKitClient
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+# Connect to TapKit
+client = TapKitClient(api_key="your-api-key")
 
-## Need inspiration?
+# Get your phone
+phone = client.get_phone()
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+# Tap the center of the screen
+phone.tap(phone.screen.center)
+
+# Take a screenshot
+screenshot = phone.screenshot()
+```
+
+## Getting Started
+
+<Steps>
+  <Step title="Get your API key">
+    Sign up at [tapkit.ai](https://tapkit.ai) and get your API key from the dashboard.
+  </Step>
+  <Step title="Install the SDK">
+    Install the TapKit Python SDK using pip:
+    ```bash
+    pip install tapkit
+    ```
+  </Step>
+  <Step title="Control your phone">
+    Start automating with just a few lines of code.
+  </Step>
+</Steps>
+
+Ready to dive in? Check out the [Quickstart guide](/quickstart).

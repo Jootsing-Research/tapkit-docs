@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "TapKit",
   "colors": {
-    "primary": "#6366F1",
-    "light": "#F8FAFC",
-    "dark": "#0F172A"
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#2563EB"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -14,55 +14,135 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "authentication"
             ]
           },
           {
-            "group": "Customization",
+            "group": "SDK",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "sdk/installation",
+              "sdk/client",
+              "sdk/phones",
+              "sdk/screenshots"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Actions",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "actions/taps",
+              "actions/swipes",
+              "actions/drag",
+              "actions/pinch"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Device Control",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "device/navigation",
+              "device/lock-unlock",
+              "device/orientation",
+              "device/buttons"
+            ]
+          },
+          {
+            "group": "App Control",
+            "pages": [
+              "apps/open-apps",
+              "apps/type-text",
+              "apps/shortcuts"
+            ]
+          },
+          {
+            "group": "Geometry",
+            "pages": [
+              "geometry/coordinates",
+              "geometry/bounding-boxes",
+              "geometry/screen"
+            ]
+          },
+          {
+            "group": "Setup",
+            "pages": [
+              "setup/mac-app",
+              "setup/phone",
+              "setup/dashboard"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "openapi": "/openapi.json"
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/authentication"
+            ]
+          },
+          {
+            "group": "Status",
+            "pages": [
+              "api-reference/status/get-status"
+            ]
+          },
+          {
+            "group": "Phones",
+            "pages": [
+              "api-reference/phones/list-phones",
+              "api-reference/phones/get-info",
+              "api-reference/phones/screenshot"
+            ]
+          },
+          {
+            "group": "Gestures",
+            "pages": [
+              "api-reference/phones/tap",
+              "api-reference/phones/double-tap",
+              "api-reference/phones/tap-and-hold",
+              "api-reference/phones/flick",
+              "api-reference/phones/pan",
+              "api-reference/phones/drag",
+              "api-reference/phones/hold-and-drag",
+              "api-reference/phones/pinch"
+            ]
+          },
+          {
+            "group": "Device Actions",
+            "pages": [
+              "api-reference/phones/home",
+              "api-reference/phones/lock",
+              "api-reference/phones/unlock",
+              "api-reference/phones/rotate",
+              "api-reference/phones/volume",
+              "api-reference/phones/spotlight",
+              "api-reference/phones/siri",
+              "api-reference/phones/app-switcher",
+              "api-reference/phones/control-center",
+              "api-reference/phones/action-button"
+            ]
+          },
+          {
+            "group": "App Control",
+            "pages": [
+              "api-reference/phones/open-app",
+              "api-reference/phones/type-text",
+              "api-reference/phones/shortcut"
+            ]
+          }
+        ]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "GitHub",
+          "href": "https://github.com/Jootsing-Research",
+          "icon": "github"
         }
       ]
     }
@@ -75,32 +155,31 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@tapkit.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://tapkit.ai/dashboard"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "cursor"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/joots_ai",
+      "github": "https://github.com/Jootsing-Research"
     }
+  },
+  "api": {
+    "baseUrl": "https://api.tapkit.ai"
   }
 }

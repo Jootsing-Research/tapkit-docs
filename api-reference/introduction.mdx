@@ -1,0 +1,123 @@
+---
+title: API Reference
+description: TapKit REST API documentation
+---
+
+The TapKit REST API provides programmatic access to control iPhones. All endpoints are accessed via HTTPS at `https://api.tapkit.ai`.
+
+## Base URL
+
+```
+https://api.tapkit.ai
+```
+
+## Authentication
+
+All API endpoints require authentication via API key in the `X-API-Key` header:
+
+```bash
+curl https://api.tapkit.ai/phones \
+  -H "X-API-Key: TK_your_api_key"
+```
+
+See [Authentication](/api-reference/authentication) for details.
+
+## Response Format
+
+All responses are JSON. Successful responses return the requested data:
+
+```json
+{
+  "id": "abc123",
+  "name": "iPhone 15 Pro",
+  "width": 1170,
+  "height": 2532
+}
+```
+
+## Error Responses
+
+Errors return a consistent format:
+
+```json
+{
+  "error": "ERROR_CODE",
+  "message": "Human readable description",
+  "context": {}
+}
+```
+
+### Common Error Codes
+
+| Code | HTTP Status | Description |
+|------|-------------|-------------|
+| `INVALID_API_KEY` | 401 | API key is invalid or revoked |
+| `AUTH_REQUIRED` | 401 | No authentication provided |
+| `PHONE_NOT_FOUND` | 404 | Phone ID doesn't exist |
+| `MAC_APP_NOT_RUNNING` | 400 | Mac companion app is offline |
+| `TIMEOUT` | 408 | Operation timed out |
+
+## Sync vs Async Mode
+
+Most action endpoints support both synchronous and asynchronous execution:
+
+### Synchronous (Default)
+
+Request blocks until action completes:
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/tap \
+  -H "X-API-Key: TK_..." \
+  -H "Content-Type: application/json" \
+  -d '{"x": 100, "y": 200}'
+```
+
+Returns:
+
+```json
+{
+  "id": "job_abc123",
+  "status": "completed",
+  "result": {},
+  "created_at": "2024-01-15T10:30:00Z",
+  "completed_at": "2024-01-15T10:30:01Z"
+}
+```
+
+### Asynchronous
+
+Add `?async=true` to return immediately with job ID:
+
+```bash
+curl -X POST "https://api.tapkit.ai/phones/{phone_id}/tap?async=true" \
+  -H "X-API-Key: TK_..." \
+  -H "Content-Type: application/json" \
+  -d '{"x": 100, "y": 200}'
+```
+
+Returns:
+
+```json
+{
+  "job_id": "job_abc123"
+}
+```
+
+Poll `GET /jobs/{job_id}` to check status.
+
+## API Sections
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    API key authentication details
+  </Card>
+  <Card title="Status" icon="signal" href="/api-reference/status/get-status">
+    System status endpoint
+  </Card>
+  <Card title="Phones" icon="mobile" href="/api-reference/phones/list-phones">
+    Phone management and info
+  </Card>
+  <Card title="Gestures" icon="hand-pointer" href="/api-reference/phones/tap">
+    Touch gesture endpoints
+  </Card>
+</CardGroup>

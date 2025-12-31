@@ -1,0 +1,72 @@
+---
+title: List Phones
+description: List all phones for your organization
+api: GET /phones
+---
+
+List all phones currently registered with your organization.
+
+## Request
+
+```bash
+curl https://api.tapkit.ai/phones \
+  -H "X-API-Key: TK_your_api_key"
+```
+
+## Response
+
+```json
+[
+  {
+    "id": "abc123-def456",
+    "name": "iPhone 15 Pro",
+    "unique_id": "00008030-001A2B3C4D5E6F",
+    "phone_number": null
+  }
+]
+```
+
+## Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `string` | Server-assigned phone identifier |
+| `name` | `string` | Device display name |
+| `unique_id` | `string` | Hardware identifier (UDID) |
+| `phone_number` | `string \| null` | Phone number if available |
+
+## Examples
+
+### List All Phones
+
+```python
+import requests
+
+response = requests.get(
+    "https://api.tapkit.ai/phones",
+    headers={"X-API-Key": "TK_..."}
+)
+phones = response.json()
+
+for phone in phones:
+    print(f"{phone['name']} ({phone['id']})")
+```
+
+### Find Phone by Name
+
+```python
+phones = response.json()
+iphone_15 = next(
+    (p for p in phones if "iPhone 15" in p["name"]),
+    None
+)
+
+if iphone_15:
+    phone_id = iphone_15["id"]
+```
+
+## Notes
+
+- Returns an empty array `[]` if no phones are connected
+- Phone IDs remain stable for the same physical device
+- The `unique_id` corresponds to the device's UDID

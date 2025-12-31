@@ -1,0 +1,77 @@
+---
+title: Installation
+description: Install the TapKit Python SDK
+---
+
+The TapKit Python SDK is available on PyPI and can be installed with pip.
+
+## Requirements
+
+- Python 3.9 or later
+- An active TapKit account with API key
+
+## Installation
+
+Install from PyPI:
+
+```bash
+pip install tapkit
+```
+
+Or with a specific version:
+
+```bash
+pip install tapkit==1.0.0
+```
+
+## Verify Installation
+
+Check that TapKit is installed correctly:
+
+```python
+import tapkit
+print(tapkit.__version__)
+```
+
+## Dependencies
+
+The TapKit SDK has minimal dependencies:
+
+- `httpx` - HTTP client for API requests
+- `pydantic` - Data validation and serialization
+
+These are installed automatically when you install the SDK.
+
+## Virtual Environments
+
+We recommend using a virtual environment to isolate your project dependencies:
+
+<Tabs>
+  <Tab title="venv">
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+    pip install tapkit
+    ```
+  </Tab>
+  <Tab title="uv">
+    ```bash
+    uv venv
+    source .venv/bin/activate
+    uv pip install tapkit
+    ```
+  </Tab>
+  <Tab title="poetry">
+    ```bash
+    poetry add tapkit
+    ```
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+Once installed, you're ready to initialize the client:
+
+<Card title="Client Setup" icon="plug" href="/sdk/client">
+  Learn how to initialize and configure the TapKit client
+</Card>

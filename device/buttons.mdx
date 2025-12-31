@@ -1,0 +1,122 @@
+---
+title: Volume & Buttons
+description: Control volume and hardware buttons
+---
+
+Control iPhone hardware buttons including volume and the Action button.
+
+## Volume Control
+
+Adjust the device volume:
+
+```python
+# Increase volume
+phone.volume_up()
+
+# Decrease volume
+phone.volume_down()
+```
+
+Each call adjusts the volume by one step.
+
+### Adjust by Multiple Steps
+
+```python
+# Increase volume by 5 steps
+for _ in range(5):
+    phone.volume_up()
+    time.sleep(0.1)
+
+# Decrease to minimum
+for _ in range(16):  # iOS typically has 16 volume steps
+    phone.volume_down()
+    time.sleep(0.1)
+```
+
+## Action Button
+
+Press the Action button (iPhone 15 Pro and later):
+
+```python
+phone.action_button()
+```
+
+The Action button's behavior depends on user settings - it might:
+- Toggle silent mode
+- Open the camera
+- Start a voice memo
+- Run a shortcut
+- And more
+
+<Note>
+  The Action button is only available on iPhone 15 Pro models and later. Calling this on older devices will have no effect.
+</Note>
+
+## Examples
+
+### Mute Before Task
+
+```python
+# Lower volume before playing audio
+for _ in range(16):
+    phone.volume_down()
+    time.sleep(0.05)
+
+# Perform task that might play audio
+phone.open_app("Music")
+```
+
+### Set Specific Volume Level
+
+```python
+# First, go to minimum
+for _ in range(16):
+    phone.volume_down()
+    time.sleep(0.05)
+
+# Then set to 50%
+for _ in range(8):
+    phone.volume_up()
+    time.sleep(0.05)
+```
+
+### Quick Capture with Action Button
+
+```python
+# If Action button is configured for Camera
+phone.action_button()
+time.sleep(1)
+
+# Take screenshot of camera view
+screenshot = phone.screenshot()
+```
+
+## Volume Behavior
+
+<AccordionGroup>
+  <Accordion title="Ringer vs Media volume">
+    Volume buttons control different volumes depending on context:
+    - When no media is playing: Ringer volume
+    - During media playback: Media volume
+    - In some apps: App-specific volume
+  </Accordion>
+
+  <Accordion title="Silent mode">
+    Volume buttons don't affect silent mode. Silent mode is controlled via the ring/silent switch (or Action button if configured).
+  </Accordion>
+
+  <Accordion title="Volume HUD">
+    Each volume press shows the volume HUD briefly. Add a small delay between presses for reliable adjustment.
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Open Apps" icon="grid-2" href="/apps/open-apps">
+    Launch applications
+  </Card>
+  <Card title="Lock & Unlock" icon="lock" href="/device/lock-unlock">
+    Control device lock state
+  </Card>
+</CardGroup>

@@ -1,0 +1,41 @@
+---
+title: Pinch
+description: Pinch/zoom/rotate gestures
+api: POST /phones/{phone_id}/pinch
+---
+
+Execute a pinch gesture for zooming or rotating.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/pinch \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"x": 500, "y": 1000, "action": "pinch_out"}'
+```
+
+### Request Body
+
+```json
+{
+  "x": 500,
+  "y": 1000,
+  "action": "pinch_out"
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `x` | `integer` | Center X coordinate |
+| `y` | `integer` | Center Y coordinate |
+| `action` | `string` | Pinch action type |
+
+### Action Types
+
+| Action | Description |
+|--------|-------------|
+| `pinch_out` | Zoom in (fingers apart) |
+| `pinch_in` | Zoom out (fingers together) |
+| `rotate_cw` | Rotate clockwise |
+| `rotate_ccw` | Rotate counter-clockwise |

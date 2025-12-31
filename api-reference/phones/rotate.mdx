@@ -1,0 +1,37 @@
+---
+title: Rotate
+description: Rotate device orientation
+api: POST /phones/{phone_id}/rotate
+---
+
+Change the device screen orientation.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/rotate \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"orientation": "left"}'
+```
+
+### Request Body
+
+```json
+{
+  "orientation": "left"
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `orientation` | `string` | Target orientation |
+
+### Orientations
+
+| Value | Description |
+|-------|-------------|
+| `portrait` | Normal upright |
+| `left` | Landscape, home button left |
+| `right` | Landscape, home button right |
+| `upside_down` | Portrait upside down |

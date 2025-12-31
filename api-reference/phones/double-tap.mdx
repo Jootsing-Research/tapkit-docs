@@ -1,0 +1,36 @@
+---
+title: Double Tap
+description: Double tap at coordinates
+api: POST /phones/{phone_id}/double-tap
+---
+
+Execute a double tap at the specified coordinates.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/double-tap \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"x": 100, "y": 200}'
+```
+
+### Request Body
+
+```json
+{
+  "x": 100,
+  "y": 200
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `x` | `integer` | X coordinate in pixels |
+| `y` | `integer` | Y coordinate in pixels |
+
+## Use Cases
+
+- Zoom in on images or maps
+- Select text
+- Quick actions in some apps

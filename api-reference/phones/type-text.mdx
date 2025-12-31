@@ -1,0 +1,37 @@
+---
+title: Type Text
+description: Type text into active field
+api: POST /phones/{phone_id}/type
+---
+
+Type text into the currently focused input field.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/type \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Hello, world!", "method": "keys"}'
+```
+
+### Request Body
+
+```json
+{
+  "text": "Hello, world!",
+  "method": "keys"
+}
+```
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `text` | `string` | required | Text to type |
+| `method` | `string` | `"keys"` | `"keys"` or `"paste"` |
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `keys` | Simulate individual keystrokes |
+| `paste` | Paste via clipboard (faster for long text) |

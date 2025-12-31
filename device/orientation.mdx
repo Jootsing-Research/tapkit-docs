@@ -1,0 +1,135 @@
+---
+title: Orientation
+description: Control device screen orientation
+---
+
+Rotate the device screen to different orientations.
+
+## Rotate
+
+Change the device orientation:
+
+```python
+# Rotate to landscape (left)
+phone.rotate(orientation="left")
+
+# Rotate to landscape (right)
+phone.rotate(orientation="right")
+
+# Rotate to portrait
+phone.rotate(orientation="portrait")
+
+# Rotate to upside down
+phone.rotate(orientation="upside_down")
+```
+
+### Orientations
+
+| Value | Description |
+|-------|-------------|
+| `"portrait"` | Normal upright orientation (default) |
+| `"left"` | Landscape with home button on left |
+| `"right"` | Landscape with home button on right |
+| `"upside_down"` | Portrait but upside down |
+
+## Screen Dimensions
+
+When the device rotates, the effective screen dimensions change:
+
+```python
+# In portrait mode
+# Width: 1170, Height: 2532 (example)
+
+# After rotating to landscape
+phone.rotate(orientation="left")
+# The physical pixels don't change, but content is rotated
+```
+
+<Note>
+  The `phone.width` and `phone.height` properties represent the physical screen dimensions, which don't change with rotation. Your tap coordinates should account for the current orientation.
+</Note>
+
+## Examples
+
+### Test Landscape Layout
+
+```python
+# Open app and test in landscape
+phone.open_app("Safari")
+time.sleep(1)
+
+# Rotate to landscape
+phone.rotate(orientation="left")
+time.sleep(0.5)
+
+# Take screenshot in landscape
+screenshot = phone.screenshot()
+with open("landscape.png", "wb") as f:
+    f.write(screenshot)
+
+# Return to portrait
+phone.rotate(orientation="portrait")
+```
+
+### Test All Orientations
+
+```python
+orientations = ["portrait", "left", "right", "upside_down"]
+
+for orientation in orientations:
+    phone.rotate(orientation=orientation)
+    time.sleep(0.5)
+
+    screenshot = phone.screenshot()
+    with open(f"screen_{orientation}.png", "wb") as f:
+        f.write(screenshot)
+```
+
+### Video App Workflow
+
+```python
+# Open video app
+phone.open_app("YouTube")
+time.sleep(2)
+
+# Tap a video
+phone.tap(phone.screen.center)
+time.sleep(1)
+
+# Rotate to landscape for better viewing
+phone.rotate(orientation="left")
+time.sleep(0.5)
+
+# Watch video...
+time.sleep(5)
+
+# Return to portrait
+phone.rotate(orientation="portrait")
+```
+
+## Tips
+
+<AccordionGroup>
+  <Accordion title="Wait after rotation">
+    The screen takes a moment to rotate. Add a short delay (0.3-0.5s) after rotating before performing other actions.
+  </Accordion>
+
+  <Accordion title="Rotation lock">
+    If rotation doesn't work, the device's rotation lock might be enabled. Check Control Center settings.
+  </Accordion>
+
+  <Accordion title="App-specific behavior">
+    Some apps lock to specific orientations. The rotate command changes the device orientation, but the app may not respond.
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Volume & Buttons" icon="volume-high" href="/device/buttons">
+    Control volume and other hardware buttons
+  </Card>
+  <Card title="Navigation" icon="house" href="/device/navigation">
+    Home, app switcher, and more
+  </Card>
+</CardGroup>

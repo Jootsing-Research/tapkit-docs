@@ -1,0 +1,208 @@
+---
+title: Bounding Boxes
+description: Working with BBox and NormalizedBBox for UI regions
+---
+
+Bounding boxes represent rectangular regions on the screen, typically from UI element detection or vision models.
+
+## BBox
+
+Absolute bounding box with pixel coordinates:
+
+```python
+from tapkit.geometry import BBox
+
+# Create from corner coordinates
+box = BBox(x1=100, y1=200, x2=300, y2=250)
+
+print(box.x1, box.y1)  # Top-left: 100, 200
+print(box.x2, box.y2)  # Bottom-right: 300, 250
+```
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `x1` | `int` | Left edge |
+| `y1` | `int` | Top edge |
+| `x2` | `int` | Right edge |
+| `y2` | `int` | Bottom edge |
+| `width` | `int` | Box width (`x2 - x1`) |
+| `height` | `int` | Box height (`y2 - y1`) |
+| `center` | `Point` | Center point of the box |
+
+### Common Usage
+
+```python
+from tapkit.geometry import BBox
+
+# Bounding box from vision model
+button = BBox(x1=100, y1=200, x2=300, y2=250)
+
+# Tap the center of the button
+phone.tap(button.center)
+
+# Get dimensions
+print(f"Button size: {button.width}x{button.height}")
+```
+
+### Check Point Containment
+
+```python
+box = BBox(x1=100, y1=200, x2=300, y2=250)
+point = Point(150, 225)
+
+if box.contains(point):
+    print("Point is inside the box")
+```
+
+### Create from Center
+
+```python
+# Create a 100x50 box centered at (200, 300)
+box = BBox.from_center(
+    center=Point(200, 300),
+    width=100,
+    height=50
+)
+
+print(box)  # BBox(x1=150, y1=275, x2=250, y2=325)
+```
+
+### Tuple Operations
+
+```python
+box = BBox(x1=100, y1=200, x2=300, y2=250)
+
+# Unpack
+x1, y1, x2, y2 = box
+
+# Index access
+box[0]  # 100 (x1)
+box[1]  # 200 (y1)
+
+# Convert to tuple
+box.as_tuple()  # (100, 200, 300, 250)
+```
+
+## NormalizedBBox
+
+Bounding box with 0.0-1.0 normalized coordinates:
+
+```python
+from tapkit.geometry import NormalizedBBox
+
+# Normalized box (center 50% of screen)
+box = NormalizedBBox(x1=0.25, y1=0.25, x2=0.75, y2=0.75)
+```
+
+### Convert to Absolute
+
+```python
+norm_box = NormalizedBBox(x1=0.1, y1=0.2, x2=0.3, y2=0.25)
+
+# Convert using screen dimensions
+abs_box = norm_box.to_absolute(width=1170, height=2532)
+
+phone.tap(abs_box.center)
+```
+
+### From Different Scales
+
+```python
+# From 0-1000 scale (common in vision models)
+norm_box = NormalizedBBox.from_1000_scale(
+    x1=100, y1=200, x2=300, y2=250
+)
+
+# From absolute coordinates
+norm_box = NormalizedBBox.from_absolute(
+    BBox(x1=117, y1=506, x2=351, y2=633),
+    width=1170,
+    height=2532
+)
+```
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `x1` | `float` | Left edge (0.0-1.0) |
+| `y1` | `float` | Top edge (0.0-1.0) |
+| `x2` | `float` | Right edge (0.0-1.0) |
+| `y2` | `float` | Bottom edge (0.0-1.0) |
+| `center` | `NormalizedPoint` | Center as normalized point |
+
+## Examples
+
+### Vision Model Integration
+
+```python
+# Model returns bounding boxes in 0-1000 scale
+detections = [
+    {"label": "button", "box": [100, 200, 300, 250]},
+    {"label": "text", "box": [50, 300, 400, 350]},
+]
+
+for det in detections:
+    x1, y1, x2, y2 = det["box"]
+
+    # Convert from 0-1000 to normalized
+    norm_box = NormalizedBBox.from_1000_scale(x1, y1, x2, y2)
+
+    # Convert to absolute for this device
+    abs_box = norm_box.to_absolute(phone.width, phone.height)
+
+    print(f"{det['label']}: {abs_box.center}")
+```
+
+### Tap Detected Elements
+
+```python
+# UI detector returns bounding box
+button_box = BBox(x1=100, y1=400, x2=300, y2=450)
+
+# Tap center of button
+phone.tap(button_box.center)
+```
+
+### Verify Element Position
+
+```python
+# Expected region for a button
+expected_region = BBox(x1=50, y1=380, x2=350, y2=480)
+
+# Detected button center
+detected_center = Point(200, 425)
+
+if expected_region.contains(detected_center):
+    print("Button is in expected location")
+    phone.tap(detected_center)
+```
+
+### Work with Multiple Elements
+
+```python
+# Multiple detected buttons
+buttons = [
+    BBox(x1=50, y1=200, x2=150, y2=250),
+    BBox(x1=200, y1=200, x2=300, y2=250),
+    BBox(x1=350, y1=200, x2=450, y2=250),
+]
+
+# Tap each button
+for button in buttons:
+    phone.tap(button.center)
+    time.sleep(0.3)
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Screen Utilities" icon="display" href="/geometry/screen">
+    Screen-level coordinate helpers
+  </Card>
+  <Card title="Coordinates" icon="crosshairs" href="/geometry/coordinates">
+    Point and NormalizedPoint classes
+  </Card>
+</CardGroup>

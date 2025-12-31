@@ -1,0 +1,41 @@
+---
+title: Open App
+description: Launch an application
+api: POST /phones/{phone_id}/open-app
+---
+
+Open an app by its display name.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/open-app \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"app_name": "Safari"}'
+```
+
+### Request Body
+
+```json
+{
+  "app_name": "Safari"
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `app_name` | `string` | Display name of the app |
+
+## Examples
+
+```json
+{"app_name": "Safari"}
+{"app_name": "Settings"}
+{"app_name": "Messages"}
+{"app_name": "Instagram"}
+```
+
+<Tip>
+Use the exact app name as displayed on the home screen. Names are case-sensitive.
+</Tip>

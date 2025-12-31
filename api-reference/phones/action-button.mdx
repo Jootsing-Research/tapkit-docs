@@ -1,0 +1,20 @@
+---
+title: Action Button
+description: Press the Action button
+api: POST /phones/{phone_id}/action-button
+---
+
+Press the Action button (iPhone 15 Pro and later).
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/action-button \
+  -H "X-API-Key: TK_your_api_key"
+```
+
+No request body required.
+
+<Note>
+Only available on iPhone 15 Pro and later models. The button's behavior depends on user settings.
+</Note>

@@ -1,0 +1,28 @@
+---
+title: Unlock
+description: Unlock the device
+api: POST /phones/{phone_id}/unlock
+---
+
+Unlock the device screen.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/unlock \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"passcode": "123456"}'
+```
+
+### Request Body
+
+```json
+{
+  "passcode": "123456"
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `passcode` | `string \| null` | Device passcode (optional if no passcode set) |
