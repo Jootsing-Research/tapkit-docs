@@ -5,10 +5,6 @@ description: Install and configure the TapKit Mac companion app
 
 The TapKit Mac app connects your iPhone to the TapKit cloud service, enabling remote control.
 
-<Note>
-This page is under construction. Check back soon for detailed setup instructions.
-</Note>
-
 ## Overview
 
 The Mac app:
@@ -23,6 +19,9 @@ The Mac app:
 - iPhone running iOS 16 or later
 - USB cable (Lightning or USB-C)
 - TapKit account
+- **Same Wi-Fi network** as your iPhone
+- **Bluetooth enabled**
+- **Same iCloud account** as your iPhone
 
 ## Installation
 
@@ -32,10 +31,98 @@ The Mac app:
 4. Connect your iPhone via USB
 5. Trust the Mac on your iPhone when prompted
 
-## Configuration
+---
 
-Detailed configuration instructions coming soon.
+## Switch Control Configuration
+
+You need to configure Switch Control in your Mac's System Settings. This sets up the keyboard keys that control Switch Control on your iPhone.
+
+Navigate to **System Settings > Accessibility > Switch Control**.
+
+{/* TODO: Screenshot of System Settings > Accessibility > Switch Control path */}
+
+### Setting Up Switches
+
+You'll configure 4 switches (keyboard keys) that map to Switch Control actions. You don't need to understand what these actions do—just set up the key assignments as shown below.
+
+<Note>
+These key assignments are currently required. Configurable key bindings are coming soon.
+</Note>
+
+| Key | Switch Control Action |
+|-----|----------------------|
+| **Tab** | Select Item |
+| **Escape** | Move to Next Item |
+| **Control** | Restart Scanning |
+| **System** | Stop Scanning |
+
+{/* TODO: Screenshot of switches configuration */}
+
+### Auto Scanning
+
+Set **Auto Scanning** to **Off**.
+
+{/* TODO: Screenshot of auto scanning setting */}
+
+That's it for Switch Control configuration on the Mac.
+
+---
+
+## Connecting to Your iPhone
+
+Once Switch Control is configured, you need to connect your Mac to your iPhone through the Switch Control system menu.
+
+### Opening the Switch Control Menu
+
+You can open the Switch Control menu in two ways:
+
+1. **From TapKit**: Click **Open Menu** in the TapKit Mac app
+2. **Manually**: Toggle on Switch Control in System Settings > Accessibility > Switch Control
+
+When the menu opens, you'll see a "Home" switch and a row of buttons:
+
+- Keyboard
+- Pointer
+- Dock
+- Menu Bar
+- System
+- Custom
+- Location
+- **Devices**
+
+{/* TODO: Screenshot of Switch Control menu showing the button row */}
+
+### Selecting Your iPhone
+
+Click **Devices** to see Apple devices on your network that are within reach.
+
+Your iPhone will appear in this list. It might be labeled "iPhone" or show your phone's custom name.
+
+{/* TODO: Screenshot of Devices list showing iPhone */}
+
+**How to verify it's the right device:** When you click on your phone in the list, you'll see Switch Control UI appear on your iPhone's screen. That confirms you've selected the correct device.
+
+Click **Connect** to establish the connection.
+
+{/* TODO: Screenshot of Connect button */}
+
+<Note>
+We're working on automating this connection process. For now, you'll need to connect manually through the menu. Automatic connection is coming soon.
+</Note>
+
+Once connected, Switch Control is active on your iPhone and TapKit can execute gestures.
+
+---
 
 ## Troubleshooting
 
-Common issues and solutions will be documented here.
+### Mac and iPhone can't connect
+
+Verify:
+- Both devices are on the **same Wi-Fi network**
+- **Bluetooth is enabled** on both devices
+- Both are signed into the **same iCloud account**
+
+### Still having issues?
+
+If you're experiencing problems not covered here, [contact our support team](mailto:support@tapkit.ai).

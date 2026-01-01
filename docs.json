@@ -63,7 +63,12 @@
               "geometry/bounding-boxes",
               "geometry/screen"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Setup",
+        "groups": [
           {
             "group": "Setup",
             "pages": [

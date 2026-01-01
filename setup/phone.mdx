@@ -3,39 +3,279 @@ title: Phone Setup
 description: Configure your iPhone for TapKit
 ---
 
-Set up your iPhone to work with TapKit.
-
-<Note>
-This page is under construction. Check back soon for detailed setup instructions.
-</Note>
+Set up your iPhone to work with TapKit by configuring Switch Control.
 
 ## Overview
 
-TapKit uses iOS accessibility features (Switch Control) to execute gestures on your iPhone. This requires some initial configuration.
+TapKit uses iOS Switch Control to execute gestures on your iPhone. This requires specific configuration to ensure reliable automation.
 
 ## Requirements
 
 - iPhone running iOS 16 or later
-- USB cable
+- USB cable (for initial setup)
 - Mac with TapKit app installed
+- **Same Wi-Fi network** on both Mac and iPhone
+- **Bluetooth enabled** on both devices
+- **Same iCloud account** signed in on both devices
 
-## Setup Steps
+<Warning>
+Your Mac and iPhone must be on the same Wi-Fi network, have Bluetooth on, and be signed into the same iCloud account. Without these, Switch Control cannot communicate between devices.
+</Warning>
 
-1. Connect your iPhone to your Mac via USB
-2. Trust the Mac when prompted on your iPhone
-3. Enable Switch Control when prompted by TapKit
-4. Allow required permissions
+## Switch Control Configuration
 
-## Switch Control
+Navigate to **Settings > Accessibility > Switch Control** on your iPhone.
 
-Switch Control is an iOS accessibility feature that TapKit uses to execute touch gestures. TapKit automatically configures Switch Control when you connect your phone.
+{/* TODO: Screenshot of Settings > Accessibility path */}
 
-## Permissions
+### Switches
 
-Your iPhone may request permissions for:
-- USB data connection
-- Trusting the connected Mac
+You should see 4 switches configured here. These are created automatically when you connect your phone to the TapKit Mac app.
+
+{/* TODO: Screenshot of switches list showing 4 switches */}
+
+### Scanning Style
+
+Set to **Manual Scanning**.
+
+| Option | Set To |
+|--------|--------|
+| Auto Scanning | - |
+| Manual Scanning | **Selected** |
+| Single Switch Step Scanning | - |
+
+{/* TODO: Screenshot of scanning style selection */}
+
+### Mode
+
+Set to **Gliding Cursor**.
+
+| Option | Set To |
+|--------|--------|
+| Item Mode | - |
+| Gliding Cursor | **Selected** |
+| Head Tracking | - |
+
+{/* TODO: Screenshot of mode selection */}
+
+### Timing
+
+| Setting | Value |
+|---------|-------|
+| Auto Hide | **Off** |
+| Move Repeat | **1 second** (On) |
+| Focused Item After Tap | **First Item** |
+
+The "Focused Item After Tap" options are "First Item" or "Current Item" - select **First Item**.
+
+{/* TODO: Screenshot of timing settings */}
+
+### Keyboard
+
+| Setting | Value |
+|---------|-------|
+| Scan Same Key | **Off** |
+| Always Tap Keyboard Keys | **On** |
+| Extended Predictions | **On** |
+
+<Note>
+Extended Predictions may not be required - we're still determining if this affects automation.
+</Note>
+
+{/* TODO: Screenshot of keyboard settings */}
+
+### Switch Stabilization
+
+Set to **Off**.
+
+### Ignore Repeat
+
+Set to **Off**.
+
+### Point Scanning
+
+<Warning>
+These settings are critical for TapKit to work correctly.
+</Warning>
+
+| Setting | Value |
+|---------|-------|
+| Gliding Cursor | **On** |
+| Selection Mode | **Single** |
+| Gliding Cursor Speed | **30** |
+
+Selection Mode options are Single, Refine, or Precise - select **Single**.
+
+<Note>
+Support for faster gliding cursor speeds is planned. For now, set to 30.
+</Note>
+
+{/* TODO: Screenshot of point scanning settings */}
+
+### Head Tracking
+
+Set to **Off**.
+
+### Audio
+
+| Setting | Value |
+|---------|-------|
+| Sound Effects | **Off** |
+| Speech | **Off** |
+
+### Visual
+
+| Setting | Value |
+|---------|-------|
+| Large Cursors | **Off** |
+| Cursor Color | **Blue** |
+
+---
+
+## Menu Items Configuration
+
+<Warning>
+Menu Items configuration is critical for automation. The order of items determines how TapKit navigates the Switch Control menu.
+</Warning>
+
+When using Switch Control, you scan horizontally, then vertically, and a menu appears. TapKit needs these menu items in a specific order to automate reliably.
+
+First, set **Group Items** to **Off**.
+
+Navigate to each menu category and configure the items in the exact order listed below.
+
+{/* TODO: Screenshot of Menu Items main screen */}
+
+### Top Level
+
+Select and order these items:
+
+1. Gestures
+2. Home
+3. Device
+4. Settings
+5. Recipes
+6. Shortcuts
+7. Element Specific Actions
+
+{/* TODO: Screenshot of Top Level menu items */}
+
+### Gestures
+
+Select and order these items:
+
+1. Saved
+2. Tap
+3. Flick
+4. Pan
+5. Pinch
+6. Tap and Hold
+7. Drag
+8. Hold and Drag
+9. Direct Touch
+10. Double Tap
+11. Freehand Fingers
+
+{/* TODO: Screenshot of Gestures menu items */}
+
+### Device
+
+Select and order these items:
+
+1. App Switcher
+2. Notification Center
+3. Control Center
+4. Lock Screen
+5. Rotate Screen
+6. Volume Up
+7. Volume Down
+8. Spotlight Search
+9. Siri
+10. Accessibility Shortcut
+11. Type to Siri
+12. Shake
+13. Screenshot
+14. Speak Screen
+15. SOS
+16. Apple Pay
+17. Use Other Devices
+18. Voice Control
+19. Analytics
+20. Restart
+
+{/* TODO: Screenshot of Device menu items */}
+
+### Settings
+
+<Note>
+Settings menu item order documentation coming soon.
+</Note>
+
+### Media Controls
+
+<Note>
+Media Controls menu item order documentation coming soon.
+</Note>
+
+---
+
+## Enabling Switch Control
+
+After configuring all the settings above, Switch Control still needs to be **turned on** for TapKit to work.
+
+<Warning>
+There is no off switch inside the Switch Control menu itself. You must toggle it on/off from the main Switch Control screen or use a shortcut.
+</Warning>
+
+To enable Switch Control:
+
+1. Go to **Settings > Accessibility > Switch Control**
+2. Toggle **Switch Control** to **On** at the top of the screen
+3. The gliding cursor should appear on screen
+
+### Using the Action Button (Recommended)
+
+If you're using TapKit on your primary phone, we recommend assigning a shortcut to quickly toggle Switch Control on and off using your iPhone's **Action Button** (iPhone 15 Pro and later).
+
+{/* TODO: Add link to shortcut download and Action Button setup instructions */}
+
+This lets you quickly enable Switch Control when running automations and disable it when using your phone normally.
+
+---
+
+## Verification
+
+After enabling Switch Control, verify everything is working:
+
+1. Switch Control should be toggled **On**
+2. You should see the gliding cursor appear on screen
+3. The TapKit Mac app should show your phone as connected and ready
 
 ## Troubleshooting
 
-Common issues and solutions will be documented here.
+### Mac and iPhone can't find each other
+
+Verify:
+- Both devices are on the **same Wi-Fi network**
+- **Bluetooth is enabled** on both devices
+- Both are signed into the **same iCloud account**
+
+<Note>
+Public Wi-Fi networks can cause issues. Home and office networks typically work fine, but public Wi-Fi (coffee shops, airports, hotels) may prevent your Mac and iPhone from discovering each other. If you're on a public network and experiencing issues, try switching to a personal hotspot or different network.
+</Note>
+
+### Switches not appearing
+
+Make sure your phone is connected via USB and trusted by the Mac. The TapKit Mac app creates the switches automatically.
+
+### Gestures not executing correctly
+
+Verify the Menu Items are in the exact order specified above. TapKit relies on this order to navigate the Switch Control menu.
+
+### Slow automation
+
+Check that Gliding Cursor Speed is set to 30. Lower values will slow down automation.
+
+### Still having issues?
+
+If you're experiencing problems not covered here, [contact our support team](mailto:support@tapkit.ai). We're happy to help you get set up.
