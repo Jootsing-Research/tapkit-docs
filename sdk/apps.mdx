@@ -1,0 +1,35 @@
+---
+title: App Control
+description: Launch apps, type text, and run shortcuts
+---
+
+## Open Apps
+
+```python
+phone.open_app("Safari")
+phone.open_app("Settings")
+phone.open_app("Instagram")
+```
+
+Use the exact display name as shown on the home screen. Names are case-sensitive.
+
+## Type Text
+
+```python
+phone.type_text("Hello world")                    # Simulate keystrokes
+phone.type_text("https://example.com", method="paste")  # Paste from clipboard
+```
+
+| Method | Description |
+|--------|-------------|
+| `"keys"` (default) | Simulates individual key presses. Works everywhere, slower for long text. |
+| `"paste"` | Uses clipboard. Fast for long text, may not work in all contexts. |
+
+## Run Shortcuts
+
+```python
+phone.run_shortcut(name="My Shortcut")  # By name
+phone.run_shortcut(index=0)             # By position (0-based)
+```
+
+Shortcuts run without input parameters. For shortcuts needing input, set up data beforehand (clipboard, files) or create a wrapper shortcut.

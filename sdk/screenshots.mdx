@@ -109,6 +109,40 @@ message = client.messages.create(
 )
 ```
 
+## Working with Vision Model Coordinates
+
+Different vision models and APIs return coordinates in different formats. TapKit's [geometry utilities](/sdk/geometry) help you convert between them:
+
+| Format | Range | Common in |
+|--------|-------|-----------|
+| Absolute pixels | `0` to `width/height` | Direct screen coordinates |
+| Normalized | `0.0` to `1.0` | Many vision APIs |
+| 0-1000 scale | `0` to `1000` | Lux, some UI detection models |
+| Percentage | `0` to `100` | Some bounding box APIs |
+
+### Converting Model Output
+
+```python
+from tapkit.geometry import NormalizedPoint, NormalizedBBox
+
+# Model returns 0-1 normalized coordinates
+norm_point = NormalizedPoint(0.5, 0.3)
+abs_point = norm_point.to_absolute(phone.width, phone.height)
+phone.tap(abs_point)
+
+# Model returns 0-1000 scale coordinates
+norm_point = NormalizedPoint.from_1000_scale(500, 300)
+abs_point = norm_point.to_absolute(phone.width, phone.height)
+phone.tap(abs_point)
+
+# Model returns bounding box in 0-1000 scale
+norm_box = NormalizedBBox.from_1000_scale(100, 200, 300, 250)
+abs_box = norm_box.to_absolute(phone.width, phone.height)
+phone.tap(abs_box.center)
+```
+
+This makes it easy to integrate with any vision model regardless of its coordinate format.
+
 ## Screenshot Loop
 
 Capture screenshots at intervals:
@@ -171,10 +205,10 @@ Common errors:
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Touch Actions" icon="hand-pointer" href="/actions/taps">
+  <Card title="Gestures" icon="hand-pointer" href="/sdk/gestures">
     Learn about tap and swipe gestures
   </Card>
-  <Card title="Device Control" icon="mobile" href="/device/navigation">
-    Control device navigation and settings
+  <Card title="Geometry" icon="crosshairs" href="/sdk/geometry">
+    Coordinate and bounding box utilities
   </Card>
 </CardGroup>

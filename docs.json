@@ -20,48 +20,34 @@
               "quickstart",
               "authentication"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "SDK",
+        "groups": [
           {
-            "group": "SDK",
+            "group": "Getting Started",
             "pages": [
               "sdk/installation",
               "sdk/client",
-              "sdk/phones",
-              "sdk/screenshots"
+              "sdk/phones"
             ]
           },
           {
-            "group": "Actions",
+            "group": "Reference",
             "pages": [
-              "actions/taps",
-              "actions/swipes",
-              "actions/drag",
-              "actions/pinch"
+              "sdk/gestures",
+              "sdk/device",
+              "sdk/apps",
+              "sdk/screenshots",
+              "sdk/geometry"
             ]
           },
           {
-            "group": "Device Control",
+            "group": "Integrations",
             "pages": [
-              "device/navigation",
-              "device/lock-unlock",
-              "device/orientation",
-              "device/buttons"
-            ]
-          },
-          {
-            "group": "App Control",
-            "pages": [
-              "apps/open-apps",
-              "apps/type-text",
-              "apps/shortcuts"
-            ]
-          },
-          {
-            "group": "Geometry",
-            "pages": [
-              "geometry/coordinates",
-              "geometry/bounding-boxes",
-              "geometry/screen"
+              "sdk/integrations/oagi"
             ]
           }
         ]
@@ -107,6 +93,7 @@
             "group": "Gestures",
             "pages": [
               "api-reference/phones/tap",
+              "api-reference/phones/tap-select",
               "api-reference/phones/double-tap",
               "api-reference/phones/tap-and-hold",
               "api-reference/phones/flick",

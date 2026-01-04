@@ -1,0 +1,61 @@
+---
+title: Gestures
+description: Touch gesture methods - tap, swipe, drag, and pinch
+---
+
+All gesture methods take coordinates as tuples `(x, y)` or [Point/BBox](/sdk/geometry) objects.
+
+## Taps
+
+```python
+phone.tap((x, y))                              # Single tap
+phone.tap("the blue button")                   # Tap by description (vision AI)
+phone.double_tap((x, y))                       # Double tap
+phone.tap_and_hold((x, y), duration_ms=1000)   # Long press
+```
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `tap(target)` | `target`: coordinates or description string | Single tap |
+| `double_tap(point)` | `point`: coordinates | Double tap |
+| `tap_and_hold(point, duration_ms=1000)` | `point`: coordinates, `duration_ms`: hold time | Long press |
+
+## Swipes
+
+```python
+phone.flick((x, y), direction="up")                    # Quick swipe
+phone.pan((x, y), direction="up", duration_ms=500)     # Slow scroll
+```
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `flick(point, direction)` | `direction`: `"up"`, `"down"`, `"left"`, `"right"` | Quick swipe gesture |
+| `pan(point, direction, duration_ms=500)` | Same as flick + `duration_ms` | Controlled scroll |
+
+## Drag
+
+```python
+phone.drag(from_point, to_point)                           # Simple drag
+phone.hold_and_drag(from_point, to_point, hold_duration_ms=500)  # Hold then drag
+```
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `drag(from_point, to_point)` | Start and end coordinates | Drag between points |
+| `hold_and_drag(from_point, to_point, hold_duration_ms=500)` | Same + hold duration | Hold before dragging (for reordering) |
+
+## Pinch
+
+```python
+phone.pinch((x, y), action="pinch_out")  # Zoom in
+phone.pinch((x, y), action="pinch_in")   # Zoom out
+phone.pinch((x, y), action="rotate_cw")  # Rotate clockwise
+phone.pinch((x, y), action="rotate_ccw") # Rotate counter-clockwise
+```
+
+| Action | Effect |
+|--------|--------|
+| `pinch_out` | Zoom in (fingers apart) |
+| `pinch_in` | Zoom out (fingers together) |
+| `rotate_cw` | Rotate clockwise |
+| `rotate_ccw` | Rotate counter-clockwise |
