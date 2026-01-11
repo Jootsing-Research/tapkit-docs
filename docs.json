@@ -96,12 +96,17 @@
               "api-reference/phones/tap",
               "api-reference/phones/tap-select",
               "api-reference/phones/double-tap",
+              "api-reference/phones/double-tap-select",
               "api-reference/phones/tap-and-hold",
+              "api-reference/phones/tap-and-hold-select",
               "api-reference/phones/flick",
+              "api-reference/phones/flick-select",
               "api-reference/phones/pan",
               "api-reference/phones/drag",
+              "api-reference/phones/drag-select",
               "api-reference/phones/hold-and-drag",
-              "api-reference/phones/pinch"
+              "api-reference/phones/pinch",
+              "api-reference/phones/pinch-select"
             ]
           },
           {
