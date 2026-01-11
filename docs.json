@@ -60,6 +60,7 @@
             "pages": [
               "setup/mac-app",
               "setup/phone",
+              "setup/shortcuts",
               "setup/dashboard"
             ]
           }

@@ -1,0 +1,97 @@
+---
+title: Shortcuts Setup
+description: Set up the TapKit Clipboard shortcut for fast text input
+---
+
+Set up the TapKit Clipboard shortcut to enable the `"shortcut"` typing method, which provides faster text input than simulating keystrokes.
+
+## Overview
+
+TapKit's typing API supports a `"shortcut"` method that uses an iOS Shortcut to paste text from the clipboard. This is faster than the default `"keys"` method, which simulates individual keystrokes.
+
+To use this method, you need to install the TapKit Clipboard shortcut on your iPhone.
+
+## Requirements
+
+- iPhone with TapKit configured
+- Signed into your TapKit account
+
+## Setup Steps
+
+<Steps>
+  <Step title="Go to the Shortcut Setup Page">
+    Navigate to [tapkit.ai/shortcut](https://tapkit.ai/shortcut) in your browser. You must be logged into your TapKit account.
+  </Step>
+  <Step title="Copy Your Shortcut Key">
+    You'll see your **Shortcut Key** displayed on the page. This is a unique identifier for your account—similar to an API key, but specifically for shortcuts.
+
+    Click the **Copy** button to copy your shortcut key to your clipboard. You'll need to paste this during the shortcut setup.
+  </Step>
+  <Step title="Select Your Phone">
+    The page will show the phone that the shortcut will be configured for. By default, it selects the most recently created phone.
+
+    If you have multiple phones, click to select the correct one before proceeding.
+  </Step>
+  <Step title="Add the Shortcut">
+    Click the **Add Shortcut** button. This will open the iOS Shortcuts app with the TapKit Clipboard shortcut ready to install.
+  </Step>
+  <Step title="Paste Your Shortcut Key">
+    During the shortcut setup, you'll be prompted to enter your shortcut key. Paste the key you copied in Step 2.
+  </Step>
+  <Step title="Complete Installation">
+    Finish adding the shortcut to your iPhone. It will now appear in your Shortcuts app.
+  </Step>
+</Steps>
+
+<div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+  <img src="/images/setup/shortcut-setup-page.png" alt="TapKit shortcut setup page" style={{ width: '32%', borderRadius: '8px' }} />
+  <img src="/images/setup/shortcut-add-prompt.jpeg" alt="iOS prompt to add shortcut" style={{ width: '32%', borderRadius: '8px' }} />
+  <img src="/images/setup/shortcut-enter-key.png" alt="Enter shortcut key during setup" style={{ width: '32%', borderRadius: '8px' }} />
+</div>
+
+## Shortcut Ordering
+
+<Warning>
+The TapKit Clipboard shortcut must be the **first shortcut** in your Shortcuts app for the automation to work correctly.
+</Warning>
+
+If you have other shortcuts installed, you'll need to reorder them so TapKit Clipboard appears first:
+
+1. Open the **Shortcuts** app on your iPhone
+2. Tap **Edit** in the top corner
+3. Drag the **TapKit Clipboard** shortcut to the first position
+4. Tap **Done**
+
+<Note>
+If you add new shortcuts later, remember to check that TapKit Clipboard is still in the first position. Newly created shortcuts may change the ordering.
+</Note>
+
+## Usage
+
+Once the shortcut is installed, you can use the `"shortcut"` method for typing:
+
+```python
+phone.type_text("Hello world", method="shortcut")
+```
+
+Or via the API:
+
+```bash
+curl -X POST https://api.tapkit.ai/phones/{phone_id}/type \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Hello world", "method": "shortcut"}'
+```
+
+## Troubleshooting
+
+### Shortcut not working
+
+Verify that:
+- The TapKit Clipboard shortcut is in the **first position** in your Shortcuts app
+- You entered the correct shortcut key during setup
+- You selected the correct phone on the setup page
+
+### Wrong phone selected
+
+If you're seeing errors about the phone not being found, you may have installed the shortcut for a different phone. Visit [tapkit.ai/shortcut](https://tapkit.ai/shortcut), select the correct phone, and reinstall the shortcut.
