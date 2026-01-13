@@ -1,7 +1,7 @@
 ---
 title: Get Status
 description: Get system status
-api: GET /status
+api: GET /v1/status
 ---
 
 Get the overall status of the TapKit system for your organization.
@@ -9,7 +9,7 @@ Get the overall status of the TapKit system for your organization.
 ## Request
 
 ```bash
-curl https://api.tapkit.ai/status \
+curl https://api.tapkit.ai/v1/status \
   -H "X-API-Key: TK_your_api_key"
 ```
 
@@ -45,7 +45,7 @@ curl https://api.tapkit.ai/status \
 import requests
 
 response = requests.get(
-    "https://api.tapkit.ai/status",
+    "https://api.tapkit.ai/v1/status",
     headers={"X-API-Key": "TK_..."}
 )
 status = response.json()
@@ -65,7 +65,7 @@ import time
 
 while True:
     response = requests.get(
-        "https://api.tapkit.ai/status",
+        "https://api.tapkit.ai/v1/status",
         headers={"X-API-Key": "TK_..."}
     )
     status = response.json()

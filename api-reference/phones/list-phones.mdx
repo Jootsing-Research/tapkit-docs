@@ -1,7 +1,7 @@
 ---
 title: List Phones
 description: List all phones for your organization
-api: GET /phones
+api: GET /v1/phones
 ---
 
 List all phones currently registered with your organization.
@@ -9,7 +9,7 @@ List all phones currently registered with your organization.
 ## Request
 
 ```bash
-curl https://api.tapkit.ai/phones \
+curl https://api.tapkit.ai/v1/phones \
   -H "X-API-Key: TK_your_api_key"
 ```
 
@@ -43,7 +43,7 @@ curl https://api.tapkit.ai/phones \
 import requests
 
 response = requests.get(
-    "https://api.tapkit.ai/phones",
+    "https://api.tapkit.ai/v1/phones",
     headers={"X-API-Key": "TK_..."}
 )
 phones = response.json()

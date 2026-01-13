@@ -77,7 +77,7 @@ phone.type_text("Hello world", method="shortcut")
 Or via the API:
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/type \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/type \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"text": "Hello world", "method": "shortcut"}'

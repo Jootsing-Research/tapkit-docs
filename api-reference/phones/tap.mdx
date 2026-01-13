@@ -1,7 +1,7 @@
 ---
 title: Tap
 description: Tap at coordinates
-api: POST /phones/{phone_id}/tap
+api: POST /v1/phones/{phone_id}/tap
 ---
 
 Execute a single tap at the specified coordinates.
@@ -9,7 +9,7 @@ Execute a single tap at the specified coordinates.
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/tap \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/tap \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"x": 100, "y": 200}'
@@ -68,7 +68,7 @@ curl -X POST https://api.tapkit.ai/phones/{phone_id}/tap \
 ### Basic Tap
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/abc123/tap \
+curl -X POST https://api.tapkit.ai/v1/phones/abc123/tap \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"x": 585, "y": 1266}'
@@ -80,7 +80,7 @@ curl -X POST https://api.tapkit.ai/phones/abc123/tap \
 import requests
 
 response = requests.post(
-    f"https://api.tapkit.ai/phones/{phone_id}/tap",
+    f"https://api.tapkit.ai/v1/phones/{phone_id}/tap",
     headers={
         "X-API-Key": "TK_...",
         "Content-Type": "application/json"

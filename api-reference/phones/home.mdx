@@ -1,7 +1,7 @@
 ---
 title: Home
 description: Press home button
-api: POST /phones/{phone_id}/home
+api: POST /v1/phones/{phone_id}/home
 ---
 
 Press the home button to return to the home screen.
@@ -9,7 +9,7 @@ Press the home button to return to the home screen.
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/home \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/home \
   -H "X-API-Key: TK_your_api_key"
 ```
 

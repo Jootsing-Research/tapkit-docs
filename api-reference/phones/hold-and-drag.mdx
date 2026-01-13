@@ -1,7 +1,7 @@
 ---
 title: Hold and Drag
 description: Long press then drag
-api: POST /phones/{phone_id}/hold-and-drag
+api: POST /v1/phones/{phone_id}/hold-and-drag
 ---
 
 Hold at a point, then drag to another location.
@@ -9,7 +9,7 @@ Hold at a point, then drag to another location.
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/hold-and-drag \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/hold-and-drag \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"from_x": 100, "from_y": 200, "to_x": 300, "to_y": 400, "hold_duration_ms": 500}'

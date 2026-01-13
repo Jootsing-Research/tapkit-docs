@@ -1,7 +1,7 @@
 ---
 title: Double Tap by Description
 description: Double tap an element using natural language description
-api: POST /phones/{phone_id}/double-tap/select
+api: POST /v1/phones/{phone_id}/double-tap/select
 ---
 
 Double tap an element on screen by describing it in natural language. Uses vision AI to find and double tap the described element.
@@ -9,7 +9,7 @@ Double tap an element on screen by describing it in natural language. Uses visio
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/double-tap/select \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/double-tap/select \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"selector": "the photo to zoom in"}'
@@ -66,7 +66,7 @@ curl -X POST https://api.tapkit.ai/phones/{phone_id}/double-tap/select \
 ### Zoom In on an Image
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/abc123/double-tap/select \
+curl -X POST https://api.tapkit.ai/v1/phones/abc123/double-tap/select \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"selector": "the map to zoom in"}'

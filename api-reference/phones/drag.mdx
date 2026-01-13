@@ -1,7 +1,7 @@
 ---
 title: Drag
 description: Drag from one point to another
-api: POST /phones/{phone_id}/drag
+api: POST /v1/phones/{phone_id}/drag
 ---
 
 Execute a drag gesture from one point to another.
@@ -9,7 +9,7 @@ Execute a drag gesture from one point to another.
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/drag \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/drag \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"from_x": 100, "from_y": 200, "to_x": 300, "to_y": 400}'

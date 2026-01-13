@@ -3,12 +3,12 @@ title: API Reference
 description: TapKit REST API documentation
 ---
 
-The TapKit REST API provides programmatic access to control iPhones. All endpoints are accessed via HTTPS at `https://api.tapkit.ai`.
+The TapKit REST API provides programmatic access to control iPhones. All endpoints are accessed via HTTPS at `https://api.tapkit.ai/v1`.
 
 ## Base URL
 
 ```
-https://api.tapkit.ai
+https://api.tapkit.ai/v1
 ```
 
 ## Authentication
@@ -16,7 +16,7 @@ https://api.tapkit.ai
 All API endpoints require authentication via API key in the `X-API-Key` header:
 
 ```bash
-curl https://api.tapkit.ai/phones \
+curl https://api.tapkit.ai/v1/phones \
   -H "X-API-Key: TK_your_api_key"
 ```
 
@@ -66,7 +66,7 @@ Most action endpoints support both synchronous and asynchronous execution:
 Request blocks until action completes:
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/tap \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/tap \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"x": 100, "y": 200}'
@@ -89,7 +89,7 @@ Returns:
 Add `?async=true` to return immediately with job ID:
 
 ```bash
-curl -X POST "https://api.tapkit.ai/phones/{phone_id}/tap?async=true" \
+curl -X POST "https://api.tapkit.ai/v1/phones/{phone_id}/tap?async=true" \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"x": 100, "y": 200}'
@@ -103,7 +103,7 @@ Returns:
 }
 ```
 
-Poll `GET /jobs/{job_id}` to check status.
+Poll `GET /v1/jobs/{job_id}` to check status.
 
 ## API Sections
 

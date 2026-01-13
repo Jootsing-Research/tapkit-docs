@@ -1,7 +1,7 @@
 ---
 title: Pinch
 description: Pinch/zoom/rotate gestures
-api: POST /phones/{phone_id}/pinch
+api: POST /v1/phones/{phone_id}/pinch
 ---
 
 Execute a pinch gesture for zooming or rotating.
@@ -9,7 +9,7 @@ Execute a pinch gesture for zooming or rotating.
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/pinch \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/pinch \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"x": 500, "y": 1000, "action": "pinch_out"}'

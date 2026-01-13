@@ -1,7 +1,7 @@
 ---
 title: Pinch by Description
 description: Pinch/zoom on an element using natural language description
-api: POST /phones/{phone_id}/pinch/select
+api: POST /v1/phones/{phone_id}/pinch/select
 ---
 
 Pinch, zoom, or rotate on an element described in natural language. Uses vision AI to find the element and perform the gesture.
@@ -9,7 +9,7 @@ Pinch, zoom, or rotate on an element described in natural language. Uses vision 
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/pinch/select \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/pinch/select \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"selector": "the map", "action": "pinch_out"}'
@@ -77,7 +77,7 @@ curl -X POST https://api.tapkit.ai/phones/{phone_id}/pinch/select \
 ### Zoom In on a Map
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/abc123/pinch/select \
+curl -X POST https://api.tapkit.ai/v1/phones/abc123/pinch/select \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"selector": "the map view", "action": "pinch_out"}'
