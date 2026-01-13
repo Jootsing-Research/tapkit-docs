@@ -1,7 +1,7 @@
 ---
 title: Flick by Description
 description: Swipe from an element using natural language description
-api: POST /phones/{phone_id}/flick/select
+api: POST /v1/phones/{phone_id}/flick/select
 ---
 
 Flick (quick swipe) starting from an element described in natural language. Uses vision AI to find the element and flick from there.
@@ -9,7 +9,7 @@ Flick (quick swipe) starting from an element described in natural language. Uses
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/flick/select \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/flick/select \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"selector": "the message list", "direction": "down"}'
@@ -68,7 +68,7 @@ curl -X POST https://api.tapkit.ai/phones/{phone_id}/flick/select \
 ### Scroll a List
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/abc123/flick/select \
+curl -X POST https://api.tapkit.ai/v1/phones/abc123/flick/select \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"selector": "the email inbox", "direction": "up"}'

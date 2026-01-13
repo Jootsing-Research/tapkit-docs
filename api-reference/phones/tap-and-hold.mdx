@@ -1,7 +1,7 @@
 ---
 title: Tap and Hold
 description: Long press at coordinates
-api: POST /phones/{phone_id}/tap-and-hold
+api: POST /v1/phones/{phone_id}/tap-and-hold
 ---
 
 Execute a long press (tap and hold) at the specified coordinates.
@@ -9,7 +9,7 @@ Execute a long press (tap and hold) at the specified coordinates.
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/tap-and-hold \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/tap-and-hold \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"x": 100, "y": 200, "duration_ms": 1000}'

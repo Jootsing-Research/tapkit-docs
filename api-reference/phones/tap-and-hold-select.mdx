@@ -1,7 +1,7 @@
 ---
 title: Tap and Hold by Description
 description: Long press an element using natural language description
-api: POST /phones/{phone_id}/tap-and-hold/select
+api: POST /v1/phones/{phone_id}/tap-and-hold/select
 ---
 
 Long press an element on screen by describing it in natural language. Uses vision AI to find and hold the described element.
@@ -9,7 +9,7 @@ Long press an element on screen by describing it in natural language. Uses visio
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/tap-and-hold/select \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/tap-and-hold/select \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"selector": "the app icon to delete", "duration_ms": 1000}'
@@ -68,7 +68,7 @@ curl -X POST https://api.tapkit.ai/phones/{phone_id}/tap-and-hold/select \
 ### Hold to Delete App
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/abc123/tap-and-hold/select \
+curl -X POST https://api.tapkit.ai/v1/phones/abc123/tap-and-hold/select \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"selector": "the Instagram app icon", "duration_ms": 2000}'

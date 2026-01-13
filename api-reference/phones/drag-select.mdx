@@ -1,7 +1,7 @@
 ---
 title: Drag by Description
 description: Drag between elements using natural language descriptions
-api: POST /phones/{phone_id}/drag/select
+api: POST /v1/phones/{phone_id}/drag/select
 ---
 
 Drag from one element to another, both described in natural language. Uses vision AI to find both elements and drag between them.
@@ -9,7 +9,7 @@ Drag from one element to another, both described in natural language. Uses visio
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/drag/select \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/drag/select \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"from_selector": "the slider handle", "to_selector": "the right end of the slider"}'
@@ -68,7 +68,7 @@ curl -X POST https://api.tapkit.ai/phones/{phone_id}/drag/select \
 ### Adjust a Slider
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/abc123/drag/select \
+curl -X POST https://api.tapkit.ai/v1/phones/abc123/drag/select \
   -H "X-API-Key: TK_..." \
   -H "Content-Type: application/json" \
   -d '{"from_selector": "the volume slider thumb", "to_selector": "the maximum volume position"}'

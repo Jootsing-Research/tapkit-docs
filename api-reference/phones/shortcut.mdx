@@ -1,7 +1,7 @@
 ---
 title: Run Shortcut
 description: Execute an iOS Shortcut
-api: POST /phones/{phone_id}/shortcut
+api: POST /v1/phones/{phone_id}/shortcut
 ---
 
 Run an iOS Shortcut by name or index.
@@ -9,7 +9,7 @@ Run an iOS Shortcut by name or index.
 ## Request
 
 ```bash
-curl -X POST https://api.tapkit.ai/phones/{phone_id}/shortcut \
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/shortcut \
   -H "X-API-Key: TK_your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Shortcut"}'
