@@ -38,6 +38,8 @@
             "group": "Reference",
             "pages": [
               "sdk/gestures",
+              "sdk/typing",
+              "sdk/settings",
               "sdk/device",
               "sdk/apps",
               "sdk/screenshots",
@@ -87,6 +89,8 @@
             "pages": [
               "api-reference/phones/list-phones",
               "api-reference/phones/get-info",
+              "api-reference/phones/get-settings",
+              "api-reference/phones/update-settings",
               "api-reference/phones/screenshot"
             ]
           },
@@ -127,7 +131,6 @@
           {
             "group": "App Control",
             "pages": [
-              "api-reference/phones/open-app",
               "api-reference/phones/type-text",
               "api-reference/phones/shortcut"
             ]
