@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
             "group": "Getting Started",
@@ -19,6 +19,33 @@
               "index",
               "quickstart",
               "authentication"
+            ]
+          },
+          {
+            "group": "Setup",
+            "pages": [
+              "setup/mac-app",
+              "setup/phone",
+              "setup/shortcuts",
+              "setup/claude-code"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "features/vision-control",
+              "features/live-streaming",
+              "features/mcp"
+            ]
+          },
+          {
+            "group": "Use Cases",
+            "pages": [
+              "use-cases/book-a-flight",
+              "use-cases/book-a-haircut",
+              "use-cases/order-dinner",
+              "use-cases/dating-apps",
+              "use-cases/qa-testing"
             ]
           }
         ]
@@ -49,21 +76,8 @@
           {
             "group": "Integrations",
             "pages": [
-              "sdk/integrations/oagi"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Setup",
-        "groups": [
-          {
-            "group": "Setup",
-            "pages": [
-              "setup/mac-app",
-              "setup/phone",
-              "setup/shortcuts",
-              "setup/dashboard"
+              "sdk/integrations/oagi",
+              "sdk/integrations/cua"
             ]
           }
         ]
@@ -117,6 +131,7 @@
             "group": "Device Actions",
             "pages": [
               "api-reference/phones/home",
+              "api-reference/phones/escape",
               "api-reference/phones/lock",
               "api-reference/phones/unlock",
               "api-reference/phones/rotate",
@@ -131,6 +146,7 @@
           {
             "group": "App Control",
             "pages": [
+              "api-reference/phones/open-app",
               "api-reference/phones/type-text",
               "api-reference/phones/shortcut"
             ]

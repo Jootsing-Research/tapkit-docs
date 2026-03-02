@@ -1,7 +1,16 @@
 ---
 title: App Control
-description: Type text and run shortcuts
+description: Open apps, type text, and run shortcuts
 ---
+
+## Open App
+
+```python
+phone.open_app("Settings")       # Opens Settings via Spotlight search
+phone.open_app("Safari")         # Opens Safari
+```
+
+Opens an app by name using Spotlight search. Handles the full search-and-tap flow automatically.
 
 ## Type Text
 

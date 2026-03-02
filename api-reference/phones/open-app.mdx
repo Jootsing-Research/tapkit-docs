@@ -1,0 +1,45 @@
+---
+title: Open App
+description: Open an app by name via Spotlight search
+api: POST /v1/phones/{phone_id}/open-app
+---
+
+Open an app by name. Uses Spotlight search to find and launch the app.
+
+## Request
+
+```bash
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/open-app \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"app_name": "Settings"}'
+```
+
+### Request Body
+
+```json
+{
+  "app_name": "Settings"
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `app_name` | `string` | Name of the app to open |
+
+### Async Mode
+
+Append `?async=true` to return immediately with a job ID:
+
+```bash
+curl -X POST https://api.tapkit.ai/v1/phones/{phone_id}/open-app?async=true \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"app_name": "Settings"}'
+```
+
+```json
+{
+  "job_id": "abc123"
+}
+```

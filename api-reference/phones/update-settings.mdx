@@ -1,0 +1,127 @@
+---
+title: Update Settings
+description: Update phone settings
+api: PATCH /v1/phones/{phone_id}/settings
+---
+
+Update settings for a phone. Supports partial updates - only include the fields you want to change.
+
+## Request
+
+```bash
+curl -X PATCH https://api.tapkit.ai/v1/phones/{phone_id}/settings \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"typing_method": "shortcut", "speed": 90}'
+```
+
+### Path Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `phone_id` | `string` | The phone identifier |
+
+### Request Body
+
+```json
+{
+  "typing_method": "shortcut",
+  "speed": 90
+}
+```
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `typing_method` | `string` | No | Default typing method: `"shortcut"` or `"keys"` |
+| `speed` | `number` | No | Switch control scanning speed: `30` (slow) or `90` (fast) |
+
+## Response
+
+Returns the full phone object with updated settings.
+
+```json
+{
+  "id": "abc123-def456",
+  "name": "iPhone 15 Pro",
+  "unique_id": "00008030-001A2B3C4D5E6F",
+  "phone_number": null,
+  "shortcut_token": "token_string",
+  "typing_method": "shortcut",
+  "speed": 90,
+  "created_at": "2024-01-12T20:41:00Z"
+}
+```
+
+### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `string` | Server-assigned phone identifier |
+| `name` | `string` | Device display name |
+| `unique_id` | `string` | Hardware identifier (UDID) |
+| `phone_number` | `string \| null` | Phone number if available |
+| `shortcut_token` | `string` | Token for iOS Shortcut authentication |
+| `typing_method` | `string` | Default typing method |
+| `speed` | `number` | Switch control scanning speed |
+| `created_at` | `string` | ISO 8601 timestamp of phone registration |
+
+## Examples
+
+### Update Typing Method Only
+
+```bash
+curl -X PATCH https://api.tapkit.ai/v1/phones/{phone_id}/settings \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"typing_method": "shortcut"}'
+```
+
+### Update Speed Only
+
+```bash
+curl -X PATCH https://api.tapkit.ai/v1/phones/{phone_id}/settings \
+  -H "X-API-Key: TK_your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{"speed": 30}'
+```
+
+### Python
+
+```python
+import requests
+
+response = requests.patch(
+    "https://api.tapkit.ai/v1/phones/{phone_id}/settings",
+    headers={
+        "X-API-Key": "TK_...",
+        "Content-Type": "application/json"
+    },
+    json={"typing_method": "shortcut", "speed": 90}
+)
+phone = response.json()
+print(f"Updated settings: {phone['typing_method']}, speed {phone['speed']}")
+```
+
+### SDK
+
+```python
+from tapkit import TapKitClient
+
+client = TapKitClient(api_key="TK_...")
+phone = client.get_phone("phone_id")
+
+# Update just typing method
+phone.update_settings(typing_method="shortcut")
+
+# Update just speed
+phone.update_settings(speed=90)
+
+# Update both
+phone.update_settings(typing_method="shortcut", speed=90)
+```
+
+## Notes
+
+- Partial updates are supported - omit fields you don't want to change
+- See [Phone Settings](/sdk/settings) for detailed explanations of each setting
+- See [Typing](/sdk/typing) for information about typing methods
