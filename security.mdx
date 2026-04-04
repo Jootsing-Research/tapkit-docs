@@ -47,24 +47,19 @@ The Mac app requests three macOS permissions during setup. Here's exactly what e
 
 ### Setup Shortcut
 
-The setup Shortcut (scanned via QR code during [Phone Setup](/setup/phone)) configures Switch Control and accessibility settings on your iPhone. It:
+During [Phone Setup](/setup/phone), the setup Shortcut changes a few Switch Control settings on your iPhone — things like setting the scanning mode to gliding cursor, adjusting cursor speed, and reordering menu items so TapKit can perform gestures. None of these affect your phone in any meaningful way outside of accessibility, and they're all irrelevant when you turn off Switch Control.
 
-- Sets Switch Control scanning mode and cursor speed
-- Configures platform switching for remote control
-- Orders menu items for gesture automation
-- Sets keyboard and timing preferences
+The shortcut is fully inspectable — you can tap the three-dot menu on it in the Shortcuts app to see exactly what it does.
 
-Nothing hidden — the Shortcut is effectively open source. You can inspect the full instruction list by tapping the three-dot menu on the Shortcut in the Shortcuts app.
+### Use TapKit shortcut (runtime)
 
-### TapKit Shortcut (runtime)
-
-The runtime Shortcut handles clipboard-based data transfer and automation actions during phone control. It uses:
+The runtime shortcut handles clipboard-based data transfer and automation actions during phone control. It uses:
 
 - Clipboard access for text transfer
 - Wi-Fi information for device discovery
 - Automation actions for executing commands
 
-This Shortcut is also fully inspectable in the Shortcuts app.
+This shortcut is also fully inspectable in the Shortcuts app.
 
 ## Shortcut token
 

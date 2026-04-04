@@ -1,0 +1,90 @@
+---
+title: MCP
+description: Connect any MCP-compatible tool to TapKit
+---
+
+For anything that doesn't have an official TapKit plugin, you can connect directly using our MCP server. This works with Cursor, Windsurf, custom agents, and any other tool that supports the Model Context Protocol.
+
+## MCP server URL
+
+```
+https://mcp.tapkit.ai/mcp
+```
+
+## Adding the MCP to your client
+
+Most MCP clients accept a JSON configuration like this:
+
+```json
+{
+  "mcpServers": {
+    "tapkit": {
+      "type": "http",
+      "url": "https://mcp.tapkit.ai/mcp"
+    }
+  }
+}
+```
+
+Where you add this depends on your client:
+
+- **Cursor** — add to your MCP settings in Cursor's configuration
+- **Windsurf** — add to the MCP configuration file
+- **Custom clients** — point your MCP client at the URL above
+
+## Authentication
+
+<Tabs>
+  <Tab title="OAuth">
+    When your client first connects to the TapKit MCP server, you'll be prompted to authenticate via your browser. Sign in with your TapKit account and the token will be cached for future sessions.
+  </Tab>
+  <Tab title="API Key">
+    You can also authenticate with an API key by passing it as a bearer token. Generate one from the [TapKit dashboard](https://tapkit.ai/dashboard).
+
+    ```json
+    {
+      "mcpServers": {
+        "tapkit": {
+          "type": "http",
+          "url": "https://mcp.tapkit.ai/mcp",
+          "headers": {
+            "Authorization": "Bearer your-api-key"
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## How it works
+
+The MCP server runs as a hosted endpoint at `mcp.tapkit.ai`. You don't need to run anything locally beyond the [TapKit Mac app](/setup/mac-app) with a connected iPhone.
+
+Your MCP client connects to the server, which routes commands to the Mac app, which executes them on the phone. Screenshots are returned through the same channel.
+
+## Available tools
+
+Once connected, your client has access to all TapKit tools:
+
+| Tool | Description |
+|------|-------------|
+| `tap(x, y)` | Single tap at coordinates |
+| `double_tap(x, y)` | Double tap |
+| `long_press(x, y)` | Tap and hold |
+| `swipe(x, y, direction)` | Flick gesture |
+| `drag(from_x, from_y, to_x, to_y)` | Drag between points |
+| `hold_and_drag(from_x, from_y, to_x, to_y)` | Long press then drag |
+| `screenshot` | Capture current screen |
+| `open_app(app_name)` | Open any app by name |
+| `type_text(text)` | Type into focused field |
+| `press_home` | Go to home screen |
+| `escape` | Dismiss keyboards/alerts |
+| `lock` / `unlock` | Lock or unlock device |
+| `volume_up` / `volume_down` | Volume controls |
+| `spotlight(query?)` | Open Spotlight search |
+| `activate_siri` | Trigger Siri |
+| `get_phone_info` | Get screen dimensions |
+| `list_phones` | List connected phones |
+| `select_phone(phone_id)` | Select a specific phone |
+

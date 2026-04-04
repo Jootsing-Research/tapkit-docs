@@ -1,0 +1,43 @@
+---
+title: Codex (App)
+description: Control iPhones from the Codex desktop app
+---
+
+The TapKit plugin for Codex gives the agent iPhone control in the desktop app. It installs an MCP server connection and a skill file that teaches Codex how to use the tools effectively.
+
+<Note>
+  Codex doesn't officially support community plugins yet — only personal plugins you install yourself. The TapKit plugin is open source and ready to install, you just need to add it manually.
+</Note>
+
+## Setup
+
+**1. Clone the plugin:**
+
+```bash
+git clone https://github.com/Jootsing-Research/tapkit-plugins-codex.git
+```
+
+**2. Install the plugin** by following the [Codex plugin installation docs](https://developers.openai.com/codex/plugins). The Codex app and CLI share the same plugin system, so once installed it's available in both.
+
+**3. Authenticate** — once the plugin is loaded, the TapKit MCP server will prompt you to sign in via your browser.
+
+**4. Verify it works:**
+
+```
+Take a screenshot of my phone
+```
+
+If a phone is connected via the Mac app, you'll see the screenshot.
+
+## What's in the plugin
+
+The TapKit plugin bundles:
+
+- **MCP server config** — connects Codex to TapKit's hosted MCP endpoint
+- **Skills** — teaches Codex how to use the coordinate system, screenshot loop, and gesture types
+
+## Links
+
+- [TapKit Codex plugin on GitHub](https://github.com/Jootsing-Research/tapkit-plugins-codex)
+- [Codex plugin docs](https://developers.openai.com/codex/plugins)
+- [API Reference](/api-reference/introduction)

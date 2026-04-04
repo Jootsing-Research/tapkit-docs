@@ -1,0 +1,75 @@
+---
+title: Claude Code (CLI)
+description: Control iPhones from Claude Code in the terminal
+---
+
+The TapKit plugin for Claude Code gives Claude iPhone control in your terminal. It installs an MCP server connection and a skill file that teaches Claude how to use the tools effectively.
+
+## Step 1: Add the TapKit plugin marketplace
+
+Run this command in Claude Code:
+
+```
+/plugin marketplace add Jootsing-Research/tapkit-plugins-claude
+```
+
+## Step 2: Install the TapKit plugin
+
+1. Type `/plugin` and navigate to the **Marketplaces** tab (press the right arrow key twice).
+2. Select the **tapkit-plugins-claude** marketplace and hit enter.
+3. Go to **Browse Plugins**, hit enter.
+4. Find **tapkit**, toggle it on, and hit enter to install.
+5. Run `/reload plugins` to load the plugin.
+
+{/* TODO: Screenshots of the plugin marketplace navigation */}
+
+## Step 3: Authenticate
+
+1. Type `/mcp` in Claude Code.
+2. Navigate down to the **TapKit** entry and select it.
+3. Choose **Authenticate** — your browser will open to sign in to TapKit.
+4. After signing in, you'll be redirected back.
+5. Run `/exit` and restart Claude Code for the changes to take effect.
+
+<Note>
+  If your browser doesn't open automatically, copy the URL from Claude Code and paste it manually. If the redirect fails after signing in, paste the full callback URL from your browser's address bar back into Claude Code.
+</Note>
+
+## Permissions
+
+TapKit's MCP tools will prompt for approval on each call by default. To avoid this, you can run Claude Code with one of these flags:
+
+- `--enable-auto-mode` — unlocks auto mode (press `Shift+Tab` to cycle to it), which auto-approves safe tool calls
+- `--dangerously-skip-permissions` — skips all permission prompts entirely
+
+<Warning>
+  These flags reduce the safety guardrails in Claude Code. Only use them if you're comfortable with Claude executing actions without confirmation.
+</Warning>
+
+## Verify it works
+
+```
+Take a screenshot of my phone
+```
+
+If a phone is connected via the Mac app, you'll see the screenshot.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Claude says TapKit isn't connected">
+    Make sure the TapKit Mac app is running with a phone connected. Run `/mcp` to check the connection status. You may need to re-authenticate.
+  </Accordion>
+
+  <Accordion title="Actions are timing out">
+    Check that your phone is awake and the screen is on. Switch Control must be enabled on the iPhone. If the Mac app shows the phone as disconnected, unplug and replug the USB cable.
+  </Accordion>
+
+  <Accordion title="Phone not showing up in available devices">
+    If you have multiple phones, Claude may need to select the right one. Ask Claude to "list my available phones" and then specify which one to use.
+  </Accordion>
+
+  <Accordion title="MCP server won't authenticate">
+    Run `/mcp`, select TapKit, and choose to re-authenticate. Make sure you're signed into the correct TapKit account in your browser.
+  </Accordion>
+</AccordionGroup>

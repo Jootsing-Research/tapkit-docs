@@ -65,20 +65,23 @@
           {
             "group": "Anthropic",
             "pages": [
-              "integrations/claude"
+              "integrations/claude-code",
+              "integrations/claude-app"
             ]
           },
           {
             "group": "OpenAI",
             "pages": [
-              "integrations/codex"
+              "integrations/codex-cli",
+              "integrations/codex-app"
             ]
           },
           {
-            "group": "Other Platforms",
+            "group": "Everywhere Else",
             "pages": [
-              "integrations/openclaw",
-              "integrations/other-mcp-clients"
+              "integrations/mcp",
+              "integrations/cli",
+              "integrations/skills"
             ]
           }
         ]
@@ -155,48 +158,7 @@
           }
         ]
       },
-      {
-        "tab": "CLI",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "cli/introduction",
-              "cli/installation",
-              "cli/authentication",
-              "cli/phone-setup",
-              "cli/quickstart"
-            ]
-          },
-          {
-            "group": "Reference",
-            "pages": [
-              "cli/commands",
-              "cli/configuration"
-            ]
-          },
-          {
-            "group": "Skills",
-            "pages": [
-              "cli/skills/overview",
-              "cli/skills/app-skills",
-              "cli/skills/task-skills",
-              "cli/skills/installing"
-            ]
-          },
-          {
-            "group": "Integrations",
-            "pages": [
-              "cli/integrations/overview",
-              "cli/integrations/claude-code",
-              "cli/integrations/codex",
-              "cli/integrations/openclaw",
-              "cli/integrations/cursor"
-            ]
-          }
-        ]
-      },
-      {
+{
         "tab": "SDK",
         "groups": [
           {

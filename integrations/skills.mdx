@@ -1,0 +1,52 @@
+---
+title: Skills
+description: Install TapKit skills to teach any AI agent how to use iPhone apps
+---
+
+If the agent you're using doesn't have an official TapKit plugin, **skills are how you bring TapKit knowledge in**. Skills are Markdown files that teach AI agents how to use apps on your phone — they follow the open [Agent Skills](https://agentskills.io) standard and work with any agent that supports them.
+
+You should always use skills alongside one of TapKit's connection methods — the [MCP server](/integrations/mcp) or the [CLI](/integrations/cli). Skills tell the agent *what to do*; the MCP server and CLI give it *the ability to do it*.
+
+## Install skills
+
+```bash
+npx skills add jootsing-research/skills
+```
+
+This installs skills into your project's `.agents/skills/` directory, where most agents automatically pick them up.
+
+## Available skills
+
+### TapKit (core)
+
+The core `tapkit` skill teaches the agent how to use TapKit itself — the coordinate system, screenshot loop, gesture types, and how to chain actions together. **Always install this one.**
+
+### App skills
+
+App skills map out a specific iOS app's UI — tabs, buttons, navigation patterns, and gotchas. They tell the agent what it's looking at when it sees a screenshot.
+
+| Skill | App | What it covers |
+|-------|-----|----------------|
+| `tapkit:hinge` | Hinge | Profile cards, roses, messaging, preferences |
+| `tapkit:telegram` | Telegram | Chat types, reactions, search, bots, groups |
+| `tapkit:tiktok` | TikTok | Feed, video actions, DMs, creator pages |
+| `tapkit:linkedin` | LinkedIn | Feed, networking, jobs, messaging |
+| `tapkit:uber-eats` | Uber Eats | Restaurant search, ordering, checkout, reorders |
+| `tapkit:twitter` | Twitter / X | Coming soon |
+| `tapkit:instagram` | Instagram | Coming soon |
+
+Install the core skill plus whichever app skills match your use case.
+
+## Using skills with a connection method
+
+Skills on their own don't give the agent access to your phone — they just teach it how apps work. You need to pair them with a connection method:
+
+- **[MCP server](/integrations/mcp)** — connect TapKit as a remote MCP server so the agent can execute taps, swipes, screenshots, and other actions
+- **[CLI](/integrations/cli)** — install the TapKit CLI and let the agent run commands directly
+
+You can also build your own integration on top of the [API](/api-reference/introduction).
+
+## Links
+
+- [Skills repository on GitHub](https://github.com/Jootsing-Research/skills)
+- [Agent Skills standard](https://agentskills.io)
