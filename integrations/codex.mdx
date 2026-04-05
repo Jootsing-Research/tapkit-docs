@@ -3,40 +3,25 @@ title: Codex
 description: Connect TapKit to the Codex CLI and Codex app
 ---
 
-TapKit integrates with Codex to give your Codex agent direct iPhone control.
+TapKit integrates with Codex to give your Codex agent direct iPhone control. Install the TapKit plugin to let Codex tap, swipe, type, screenshot, and control your iPhone.
 
-<Warning>
-  The Codex integration is currently in development. This page will be updated with full setup instructions when the plugin system is ready.
-</Warning>
+<Note>
+  Codex doesn't officially support community plugins yet — only personal plugins you install yourself. The TapKit plugin is open source and ready to install, you just need to add it manually.
+</Note>
 
-## What to expect
+## Choose your setup
 
-The Codex integration will follow the same pattern as [Claude](/integrations/claude) — two paths depending on how you use Codex:
-
-### Codex CLI
-
-Install TapKit as a plugin for the Codex command-line tool. The agent will be able to tap, swipe, type, screenshot, and control your iPhone from the terminal.
-
-### Codex App
-
-Connect TapKit as an MCP server in the Codex desktop app for visual, chat-based iPhone control.
-
-## In the meantime
-
-While the Codex plugin is in development, you can use TapKit with Codex through the [MCP server URL](/integrations/other-mcp-clients):
-
-```json
-{
-  "mcpServers": {
-    "tapkit": {
-      "type": "http",
-      "url": "https://mcp.tapkit.ai/mcp"
-    }
-  }
-}
-```
+<CardGroup cols={2}>
+  <Card title="Codex CLI" icon="terminal" href="/integrations/codex-cli">
+    Install TapKit as a plugin for the Codex command-line tool.
+  </Card>
+  <Card title="Codex App" icon="desktop" href="/integrations/codex-app">
+    Install TapKit as a plugin in the Codex desktop app.
+  </Card>
+</CardGroup>
 
 ## Links
 
-- [Codex documentation](https://docs.codex.ai)
+- [TapKit Codex plugin on GitHub](https://github.com/Jootsing-Research/tapkit-plugins-codex)
+- [Codex plugin docs](https://developers.openai.com/codex/plugins)
 - [TapKit API Reference](/api-reference/introduction)

@@ -18,7 +18,6 @@ Preview at `http://localhost:3000`.
 | Documentation | `setup/`, `use-cases/` | Getting started, setup guides, use cases |
 | Integrations | `integrations/` | Claude, Codex, MCP, CLI, skills |
 | API Reference | `api-reference/` | REST endpoints for devices, gestures, actions |
-| CLI | `cli/` | CLI installation, commands, skills, integrations |
 | SDK | `sdk/` | Python SDK reference |
 
 ## Deploying

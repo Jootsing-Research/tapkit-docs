@@ -11,17 +11,44 @@ The TapKit plugin for Codex gives the agent iPhone control in the desktop app. I
 
 ## Setup
 
-**1. Clone the plugin:**
+**1. Clone the [tapkit-plugins-codex](https://github.com/Jootsing-Research/tapkit-plugins-codex) repo** to a location of your choice. Remember where you clone it — you'll need the path in the next step.
 
-```bash
-git clone https://github.com/Jootsing-Research/tapkit-plugins-codex.git
+**2. Create the marketplace file** at `~/.agents/plugins/marketplace.json`:
+
+```json
+{
+  "name": "tapkit",
+  "interface": {
+    "displayName": "Tap Kit"
+  },
+  "plugins": [
+    {
+      "name": "tapkit",
+      "source": {
+        "source": "local",
+        "path": "<path-to-cloned-repo>/plugins/tapkit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
 ```
 
-**2. Install the plugin** by following the [Codex plugin installation docs](https://developers.openai.com/codex/plugins). The Codex app and CLI share the same plugin system, so once installed it's available in both.
+<Warning>
+  **Update the path!** Replace `<path-to-cloned-repo>` with the actual path to where you cloned the repo, relative to your home directory. It must point to the `plugins/tapkit` subdirectory inside the cloned repo.
 
-**3. Authenticate** — once the plugin is loaded, the TapKit MCP server will prompt you to sign in via your browser.
+  For example, if you cloned to `~/Dev/tapkit-plugins-codex`, the path would be `./Dev/tapkit-plugins-codex/plugins/tapkit`.
+</Warning>
 
-**4. Verify it works:**
+**3. Install the plugin** — restart Codex, then go to **Plugins** in the left sidebar. In the plugins page, change the dropdown from **Built by OpenAI** to **TapKit**, then install the plugin.
+
+**4. Authenticate** — once the plugin is loaded, the TapKit MCP server will prompt you to sign in via your browser.
+
+**5. Verify it works:**
 
 ```
 Take a screenshot of my phone
