@@ -7,13 +7,6 @@ description: "The architecture behind TapKit in 60 seconds"
 
 TapKit has three pieces that work together: your **iPhone**, the **Mac app**, and the **TapKit server**.
 
-```mermaid
-flowchart LR
-    A["🤖 Your AI Agent"] -->|API / MCP| B["☁️ TapKit Server"]
-    B -->|Persistent connection| C["💻 Mac App"]
-    C -->|Switch Control| D["📱 iPhone"]
-```
-
 ### The Mac app is the host
 
 The Mac app runs on a Mac that's physically connected to your iPhone via USB and on the same Wi-Fi network. It uses Apple's built-in Switch Control accessibility feature to see the phone's screen and send taps, swipes, and keystrokes — the same way a human would interact with it. The Mac is the only thing that talks directly to the phone.
