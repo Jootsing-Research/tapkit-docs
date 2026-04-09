@@ -107,6 +107,20 @@
             "group": "Endpoints",
             "pages": [
               {
+                "group": "Sessions",
+                "pages": [
+                  "api-reference/sessions/create-session",
+                  "api-reference/sessions/list-sessions",
+                  "api-reference/sessions/get-session",
+                  "api-reference/sessions/get-events",
+                  "api-reference/sessions/send-message",
+                  "api-reference/sessions/interrupt",
+                  "api-reference/sessions/pause",
+                  "api-reference/sessions/resume",
+                  "api-reference/sessions/stop"
+                ]
+              },
+              {
                 "group": "Status",
                 "pages": [
                   "api-reference/status/get-status"
@@ -117,8 +131,11 @@
                 "pages": [
                   "api-reference/phones/list-phones",
                   "api-reference/phones/get-info",
+                  "api-reference/phones/get-status",
                   "api-reference/phones/get-settings",
-                  "api-reference/phones/update-settings"
+                  "api-reference/phones/update-settings",
+                  "api-reference/phones/select-phone",
+                  "api-reference/phones/copy-text"
                 ]
               },
               {
