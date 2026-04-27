@@ -145,7 +145,6 @@
                   "api-reference/phones/double-tap",
                   "api-reference/phones/tap-and-hold",
                   "api-reference/phones/flick",
-                  "api-reference/phones/pan",
                   "api-reference/phones/drag",
                   "api-reference/phones/hold-and-drag",
                   "api-reference/phones/pinch"
@@ -156,15 +155,11 @@
                 "pages": [
                   "api-reference/phones/screenshot",
                   "api-reference/phones/open-app",
-                  "api-reference/phones/type-text",
                   "api-reference/phones/shortcut",
                   "api-reference/phones/home",
                   "api-reference/phones/escape",
                   "api-reference/phones/lock",
                   "api-reference/phones/unlock",
-                  "api-reference/phones/rotate",
-                  "api-reference/phones/volume-up",
-                  "api-reference/phones/volume-down",
                   "api-reference/phones/spotlight",
                   "api-reference/phones/siri",
                   "api-reference/phones/app-switcher",
